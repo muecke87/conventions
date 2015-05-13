@@ -17,7 +17,7 @@
   - Avoid using `var`. 
   > `var` is to be considered legacy. 
 
-  - Use `const` for all of your declarations
+  - Use `const` for all of your declarations.
   > This ensures that you can't reassign your references (mutation), which can lead to bugs and difficult to comprehend code.
 
     ```javascript
