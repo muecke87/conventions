@@ -2,12 +2,24 @@
 
 ## Table of Contents
 
+1. [General](#general)
 1. [Code Formatting](#code-formatting)
 1. [Variable Declarations](#variable-declarations)
 1. [Objects](#objects)
 1. [Strings](#strings)
 1. [Arrays](#arrays)
 1. [Naming things](#naming-things)
+
+## General
+  - **ES6**: Embrace ECMAScript 6 (also known as ECMAScript 2015). It's the next JavaScript standard. Some features:
+    - Arrow functions
+    - Classes
+    - Template Strings
+    - Modules
+    - Generators
+    - Promises
+    - ...
+  - **ES5**: Use transpilers like [Babel](https://babeljs.io/) to convert the ES6 code into pure ES5, so it can be understandable by all browsers.
 
 ## Code Formatting
   - Indent with 4 spaces.
