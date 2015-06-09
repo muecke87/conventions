@@ -24,6 +24,7 @@
 ## Code Formatting
   - Indent with 4 spaces.
   - Always use semicolons.
+  - Add new line at end of files.
 
 ## Variable Declarations
   - Avoid using `var`. 
