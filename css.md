@@ -135,7 +135,8 @@
     .mPrimary {}
     .mLarge {}
     ```
-    - **[Descedants](#descedants)**
+    
+  - **[Descedants](#descedants)**
     
     Format: 
     ```
@@ -149,6 +150,7 @@
     ```
 
   - **[States](#states)**
+  
     Format: 
     ```
     .[is|has]StateName {}
