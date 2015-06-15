@@ -29,7 +29,7 @@
   ```
 
 ### Modifiers
-  A modifier is a property fo a component that alters its look or behavior. The class should be included in the HTML *in addition* to the base component class.
+  A modifier is a property of a component that alters its look or behavior. The class should be included in the HTML *in addition* to the base component class.
 
   Example:
   ```css
