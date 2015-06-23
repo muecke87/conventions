@@ -9,6 +9,8 @@
 1. [Strings](#strings)
 1. [Arrays](#arrays)
 1. [Naming things](#naming-things)
+1. [Documenting code](#documenting-code)
+  1. [JSDoc](#jsdoc)
 
 ## General
   - **ES6**: Embrace ECMAScript 6 (also known as ECMAScript 2015). It's the next JavaScript standard. Some features:
@@ -27,8 +29,8 @@
   - Add new line at end of files.
 
 ## Variable Declarations
-  - Avoid using `var`. 
-  > `var` is to be considered legacy. 
+  - Avoid using `var`.
+  > `var` is to be considered legacy.
 
   - Use `const` for all of your declarations.
   > This ensures that you can't reassign your references (mutation), which can lead to bugs and difficult to comprehend code.
@@ -115,4 +117,58 @@
 
     ```javascript
     let cpuCount = os.cpus().length;
+    ```
+
+## Documenting code
+
+  - Always use `//` unless it's a JSDoc declaration.
+
+  - Insert always a space after `//`.
+
+    ```javascript
+    // bad
+    //This is a comment
+
+    // good
+    // This is a comment
+    ```
+
+  - Don't use trailing `.` unless the comment contains multiple sentences.
+
+  - Don't write down a developer name or other personal notes.
+
+  - `TODO`, `FIXME`, `HACK` or other markers are not allowed. Open instead an issue, if you cannot fix it immediately.
+  > Such markers tend to rot over time and nobody feels responsible to deal with it.
+
+### JSDoc
+
+  Typically we don't generate a [JSDoc](http://usejsdoc.org/) documentation when we're writing code just for internal use. But we want to make the life for JavaScript developers easier. Therefore, we use a subset of JSDoc to provide structured information about some code parts. Some IDEs will even use JSDoc to make code suggestions.
+
+  - **Primitive types** start with a lowercase letter: number, string, boolean, null, undefinded
+
+  - **Object types** start with a capital letter: Function, Object, Array, RegExp, MyCustomObject
+
+  - `@param` and `@return` can be used without a description.
+
+  - Use '@see' for further information.
+
+  - Document errors that a function might throw with `@throw`
+
+#### Function comments
+
+  - A description must be provided, which starts with a sentence written in the third person singular.
+
+    ```javascript
+    /**
+     * Generates a config file
+     * @see http://example.org/additional-infos
+     * @param {Object} options
+     * @param {number} options.port Server port
+     * @param {Function} cb Callback
+     * @return {Object}
+     * @throws Will throw an error if options is null.
+     */
+    function makeConfig(options, cb) {
+        // ...
+    }
     ```
