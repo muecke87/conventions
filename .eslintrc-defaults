@@ -42,11 +42,11 @@
         // e.g. bad: var a = x ? true : false;
         "no-unneeded-ternary": 2,
 
-        // Comparing a variable against itself is usually an error, 
+        // Comparing a variable against itself is usually an error,
         // either an typo or refactoring error
         "no-self-compare": 2,
 
-        // It is considered good practice to only throw the Errorobject itself 
+        // It is considered good practice to only throw the Errorobject itself
         // or an object using the Error object as base objects for user-defined exceptions
         "no-throw-literal": 2,
 
@@ -78,7 +78,7 @@
         // Require space before the opening brace of blocks
         "space-before-blocks": 2,
 
-        // Disallow spaces before function parenthesis 
+        // Disallow spaces before function parenthesis
         "space-before-function-paren": [2, "never"],
 
         // Disallow spaces inside of parentheses
@@ -88,7 +88,10 @@
         "spaced-comment": [2, "always"],
 
         // Validates JSDoc comments are syntactically correct
-        "valid-jsdoc": 2,
+        "valid-jsdoc": [2, {
+            "requireParamDescription": false,
+            "requireReturnDescription": false
+        }],
 
         // Catch focus tests
         // e.g. ddescribe, iit
