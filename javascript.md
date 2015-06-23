@@ -142,6 +142,8 @@
 
 ### JSDoc
 
+  *work in progress*
+
   Typically we don't generate a [JSDoc](http://usejsdoc.org/) documentation when we're writing code just for internal use. But we want to make the life for JavaScript developers easier. Therefore, we use a subset of JSDoc to provide structured information about some code parts. Some IDEs will even use JSDoc to make code suggestions.
 
   - **Primitive types** start with a lowercase letter: number, string, boolean, null, undefinded
