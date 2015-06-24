@@ -15,7 +15,7 @@
 | prio:low           | Nice to have.                                                                   |
 | status:blocked     | Someone cannot continue to work on it (e.g. until some other work is finished). |
 | status:in-progress | Someone is working on it.                                                       |
-| type:bug           | Reported bugs. They don't have to be confirmed yet.                             |
+| type:bug           | Reported bug. It doesn't have to be confirmed as a bug by a team member yet.    |
 | type:enhancement   | Making existing stuff better.                                                   |
 | type:new-feature   | Confirmed feature which will be implmeneted in the near future.                 |
 | type:question      | Discussing stuff.                                                               |
