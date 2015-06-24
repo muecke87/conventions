@@ -1,5 +1,6 @@
 # [WIP] Best practices and code conventions
 
+* [Workflow](https://github.com/infektweb/conventions/blob/master/workflow.md)
 * [JavaScript](https://github.com/infektweb/conventions/blob/master/javascript.md)
 * [CSS/SASS](https://github.com/infektweb/conventions/blob/master/css.md)
 
