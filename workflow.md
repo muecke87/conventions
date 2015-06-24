@@ -15,9 +15,9 @@
 | prio:low           | Nice to have.                                                                   |
 | status:blocked     | Someone cannot continue to work on it (e.g. until some other work is finished). |
 | status:in-progress | Someone is working on it.                                                       |
-| type:bug           |                                                                                 |
+| type:bug           | Reported bugs. They don't have to be confirmed yet.                             |
 | type:enhancement   | Making existing stuff better.                                                   |
-| type:new-feature   |                                                                                 |
+| type:new-feature   | Confirmed feature which will be implmeneted in the near future.                 |
 | type:question      | Discussing stuff.                                                               |
 | type:refactoring   | Restructuring existing code without changing its external behavior.             |
 | invalid            | This issue is a duplicate (close it with the comment "duplicate of #123") or won't be fixed. Always leave a comment. |
