@@ -21,6 +21,8 @@
 
 ## Before you begin
 
+  - Learn the [Git basics](https://try.github.io/)
+
   - If you don't already have one, create a [GitHub](http://www.github.com) account
 
   - Clone the project onto your computer:
