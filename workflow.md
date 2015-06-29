@@ -97,3 +97,4 @@
 ## Further Reading
 
   - [Pro Git book](http://git-scm.com/book)
+  - [Understanding the GitHub Flow](https://guides.github.com/introduction/flow/)
