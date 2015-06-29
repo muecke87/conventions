@@ -91,4 +91,6 @@
 | invalid            | This issue is a duplicate (close it with the comment "duplicate of #123") or won't be fixed. Always leave a comment. |
 
 
+## Further Reading
 
+  - [Pro Git book](http://git-scm.com/book)
