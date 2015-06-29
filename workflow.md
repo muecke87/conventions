@@ -46,7 +46,7 @@
     - Do not end the subject line with a period - it's a title and titles don't end with a period.
     - Use the body to explain *why* you made these changes.
     - Separate subject from body with a blank line.
-    - Here is a template originally written by Tim Pope:
+    - Here is a [template originally written by Tim Pope](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html):
   
     ```
     Short (50 chars or less) summary of changes
