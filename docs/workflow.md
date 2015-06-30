@@ -21,7 +21,7 @@
 
 ## Before you begin
 
-  - Learn the [Git basics](https://try.github.io/)
+  - Install [Git](https://git-scm.com/) and learn the [basics](https://try.github.io/)
 
   - If you don't already have one, create a [GitHub](http://www.github.com) account
 
