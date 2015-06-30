@@ -1,9 +1,9 @@
 # [WIP] Best practices and code conventions
 
-* [Workflow](https://github.com/infektweb/conventions/blob/master/workflow.md)
-* [JavaScript](https://github.com/infektweb/conventions/blob/master/javascript.md)
-* [CSS/SASS](https://github.com/infektweb/conventions/blob/master/css.md)
-* [React + Flux](https://github.com/infektweb/conventions/blob/master/react-flux.md)
+* [Workflow](https://github.com/infektweb/conventions/blob/master/docs/workflow.md)
+* [JavaScript](https://github.com/infektweb/conventions/blob/master/docs/javascript.md)
+* [CSS/SASS](https://github.com/infektweb/conventions/blob/master/docs/css.md)
+* [React + Flux](https://github.com/infektweb/conventions/blob/master/docs/react-flux.md)
 
 ## ESLint
 * [eslint](https://www.npmjs.com/package/eslint)
