@@ -77,6 +77,15 @@
     git merge master
     ```
 
+## Submitting code for review
+
+  -  Before submitting your code, make sure you fulfill the following requirements:
+    - Your branch is up to date with the `master` branch.
+    - Your changes adhere to our [coding standards](https://github.com/infektweb/conventions).
+    - All existing tests pass.
+    - You've added tests for your new code.
+    - Your code is documented.
+
 ## Github Labels
 
 | Label              | Description                                                                     |
