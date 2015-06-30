@@ -40,13 +40,17 @@
   - [Commit early and often](http://www.databasically.com/2011/03/14/git-commit-early-commit-often/).
 
   - Write good commit messages:
-  
+    - Reference the GitHub issue with `#<issue number>`
     - Use the imperative mode: "add", "change", "fix" instead of "added", "changed", "fixed".
     - Capitalize the subject line.
     - Do not end the subject line with a period - it's a title and titles don't end with a period.
     - Use [this template](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) for longer commit messages:
       - Use the body to explain *why* you made these changes.
       - Separate subject from body with a blank line.
+
+  ```sh
+  git commit -m "Add GZIP compression #55"
+  ```
 
   - Periodically, changes made to `master` (if any) should be merged back into your branch.
   
