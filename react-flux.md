@@ -9,6 +9,7 @@
   1. [Testing actions](#testing-actions)
 1. [Stores](#stores)
   1. [Testing stores](#testing-stores)
+1. [Reading List](#reading-list)
 
 ## General
 
@@ -40,3 +41,6 @@
 #### Resources
   - https://github.com/yahoo/fluxible.io/tree/master/tests/unit/stores
 
+## Reading List
+
+  - [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
