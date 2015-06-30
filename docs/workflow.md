@@ -5,6 +5,7 @@
 1. [General](#general)
 1. [Before you begin](#before-you-begin)
 1. [Working on a feature or bugfix](#working-on-a-feature-or-bugfix)
+1. [Submitting code for review](#submitting-code-for-review)
 1. [GitHub Labels](#github-labels)
 1. [Further Reading](#further-reading)
 
