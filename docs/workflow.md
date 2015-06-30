@@ -23,9 +23,7 @@
 ## Before you begin
 
   - Install [Git](https://git-scm.com/) and learn the [basics](https://try.github.io/)
-
   - If you don't already have one, create a [GitHub](http://www.github.com) account
-
   - Clone the project onto your computer:
   
   ```sh
