@@ -100,7 +100,10 @@
 
 ## Merge
 
-  - todo
+  - Once at least 1 and preferably 2 people have reviewed the code, the pull request can be merged into the `master` branch.
+
+  - **Never merge your own code.**
+  
 
 ## Github Labels
 
