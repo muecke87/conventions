@@ -5,7 +5,10 @@
 1. [General](#general)
 1. [Before you begin](#before-you-begin)
 1. [Working on a feature or bugfix](#working-on-a-feature-or-bugfix)
+1. [Using pull requests](#using-pull-requests)
 1. [Submitting code for review](#submitting-code-for-review)
+1. [Code review](#code-review)
+1. [Merge](#merge)
 1. [GitHub Labels](#github-labels)
 1. [Further Reading](#further-reading)
 
@@ -72,6 +75,10 @@
     git merge master
     ```
 
+## Using pull requests
+
+  - It doesn't matter if you open a pull request when you start a feature or wait until the feature is implemented.
+
 ## Submitting code for review
 
   -  Before submitting your code, make sure you fulfill the following requirements:
@@ -80,6 +87,37 @@
     - All existing tests pass.
     - You've added tests for your new code.
     - Your code is documented.
+
+  - Label your pull request with `pr:needs-review`.
+
+## Code review
+
+  - Everybody in the team can review a pull request which has the label `pr:needs-review`.
+  
+  - Checklist:
+    - Is the branch mergeable?
+    - Does the code work?
+    - Does the code make sense?
+    - Is the code well-structured?
+    - Does the code conform to our [coding standards](https://github.com/infektweb/conventions)?
+    - Are variables properly defined with consistent and meaningful names?
+    - Is there any redundant or duplicate code?
+    - Are available libraries being used effectively?
+    - Is there any commented out code?
+    - Are edge cases handled properly?
+    - Are data inputs checked and output values encoded?
+    - Is the code adequately documented ("why", complex and critical sections)?
+    - Do tests exist and are they comprehensive?
+    - Is the performance acceptable?
+
+  - Add a comment and set the label `pr:needs-revision`, if you found something that can be improved.
+
+  - Leave a `+1` or `:+1:` comment, if it passed your review and doesn't need modifications.
+  
+
+## Merge
+
+  - todo
 
 ## Github Labels
 
