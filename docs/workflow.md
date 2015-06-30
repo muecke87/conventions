@@ -44,30 +44,9 @@
     - Use the imperative mode: "add", "change", "fix" instead of "added", "changed", "fixed".
     - Capitalize the subject line.
     - Do not end the subject line with a period - it's a title and titles don't end with a period.
-    - Use the body to explain *why* you made these changes.
-    - Separate subject from body with a blank line.
-    - Here is a [template originally written by Tim Pope](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html):
-  
-    ```
-    Short (50 chars or less) summary of changes
-
-    More detailed explanatory text, if necessary.  Wrap it to
-    about 72 characters or so.  In some contexts, the first
-    line is treated as the subject of an email and the rest of
-    the text as the body.  The blank line separating the
-    summary from the body is critical (unless you omit the body
-    entirely); tools like rebase can get confused if you run
-    the two together.
-    
-    Further paragraphs come after blank lines.
-    
-      - Bullet points are okay, too
-    
-      - Typically a hyphen or asterisk is used for the bullet,
-        preceded by a single space, with blank lines in
-        between, but conventions vary here
-    ```
-   
+    - Use [this template](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) for longer commit messages:
+      - Use the body to explain *why* you made these changes.
+      - Separate subject from body with a blank line.
 
   - Periodically, changes made to `master` (if any) should be merged back into your branch.
   
