@@ -8,7 +8,7 @@
 1. [Using pull requests](#using-pull-requests)
 1. [Submitting code for review](#submitting-code-for-review)
 1. [Code review](#code-review)
-1. [Merge](#merge)
+1. [Merge and deploy](#merge-and-deploy)
 1. [GitHub Labels](#github-labels)
 1. [Further Reading](#further-reading)
 
@@ -98,12 +98,13 @@
   - Leave a `+1` or `:+1:` comment, if it passed your review and doesn't need modifications.
   
 
-## Merge
+## Merge and deploy
 
   - Once at least 1 and preferably 2 people have reviewed the code, the pull request can be merged into the `master` branch.
 
   - **Never merge your own code.**
   
+  - As soon as you merge the pull request into the `master` the tests are kicked off on our CI server and the deployment starts, if the tests pass.
 
 ## Github Labels
 
