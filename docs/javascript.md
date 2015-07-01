@@ -15,6 +15,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 1. [Naming things](#naming-things)
 1. [Documenting code](#documenting-code)
   1. [JSDoc](#jsdoc)
+1. [Resources](#resources)
 
 ## General
   - **ES6**: Embrace [ECMAScript 6](http://es6-features.org/) (also known as ECMAScript 2015). It's the next JavaScript standard. Some features:
@@ -402,3 +403,13 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
         // ...
     }
     ```
+
+## Resources
+
+**ES6**
+  
+  - [Learn ES2015](https://babeljs.io/docs/learn-es2015/)
+
+**Functional programming**
+  
+  - [Don’t Be Scared Of Functional Programming](http://www.smashingmagazine.com/2014/07/02/dont-be-scared-of-functional-programming/)
