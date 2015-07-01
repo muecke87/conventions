@@ -9,7 +9,9 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 1. [Objects](#objects)
 1. [Strings](#strings)
 1. [Arrays](#arrays)
+1. [Functions](#functions)
 1. [Modules](#modules)
+1. [Comparison Operators & Equality](#comparison-operators--equality)
 1. [Naming things](#naming-things)
 1. [Documenting code](#documenting-code)
   1. [JSDoc](#jsdoc)
@@ -29,6 +31,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
   - Indent with 4 spaces.
   - Always use semicolons.
   - Add new line at end of files.
+  - Clean up trailing whitespaces at end-of-line.
 
 ## Variable Declarations
   - Avoid using `var`.
@@ -77,6 +80,109 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     const item = {};
     ```
 
+  - Add a space after the object key ´:´:
+  
+    ```javascript
+    // bad
+    const item = {
+      title:'Example'
+    }
+    
+    // good
+    const item = {
+      title: 'Example'
+    }
+    ```
+
+  - Use object method shorthand.
+  
+    ```javascript
+    // bad
+    const atom = {
+        value: 1,
+      
+        addValue: function (value) {
+            return atom.value + value;
+        }
+    };
+    
+    // good
+    const atom = {
+        value: 1,
+      
+        addValue(value) {
+            return atom.value + value;
+        }
+    };
+    ```
+
+  - Use property value shorthand.
+  
+    ```javascript
+    const lukeSkywalker = 'Luke Skywalker';
+
+    // bad
+    const obj = {
+        lukeSkywalker: lukeSkywalker,
+    };
+  
+    // good
+    const obj = {
+        lukeSkywalker,
+    };
+    ```
+
+  - Group your shorthand properties at the beginning of your object declaration.
+  
+    ```javascript
+    const anakinSkywalker = 'Anakin Skywalker';
+    const lukeSkywalker = 'Luke Skywalker';
+  
+    // bad
+    const obj = {
+        episodeOne: 1,
+        twoJedisWalkIntoACantina: 2,
+        lukeSkywalker,
+        episodeThree: 3,
+        mayTheFourth: 4,
+        anakinSkywalker
+    };
+  
+    // good
+    const obj = {
+        lukeSkywalker,
+        anakinSkywalker,
+        episodeOne: 1,
+        twoJedisWalkIntoACantina: 2,
+        episodeThree: 3,
+        mayTheFourth: 4
+    };
+    ```
+
+  - Use [object destructuring](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) when accessing and using multiple properties of an object.
+  
+    ```javascript
+    // bad
+    function getFullName(user) {
+      const firstName = user.firstName;
+      const lastName = user.lastName;
+  
+      return `${firstName} ${lastName}`;
+    }
+  
+    // good
+    function getFullName(obj) {
+      const { firstName, lastName } = obj;
+      return `${firstName} ${lastName}`;
+    }
+  
+    // best
+    function getFullName({ firstName, lastName }) {
+      return `${firstName} ${lastName}`;
+    }
+    ```
+
+
 ## Strings
 
   - Use single quotes `''` for strings.
@@ -87,6 +193,20 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 
     // good
     const name = 'example';
+    ```
+
+  - When programmatically building up strings, use [template strings](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/template_strings) instead of concatenation.
+  
+    ```javascript
+    // bad
+    function sayHi(name) {
+        return 'How are you, ' + name + '?';
+    }
+  
+    // good
+    function sayHi(name) {
+        return `How are you, ${name}?`;
+    }
     ```
 
 ## Arrays
@@ -111,6 +231,26 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 
     // good
     fruits.push('apple');
+    ```
+
+## Functions
+
+  - Use default parameter syntax rather than mutating function arguments.
+  
+    ```javascript
+    // bad
+    function handleThings(opts) {
+        // No! We shouldn't mutate function arguments.
+        // Double bad: if opts is falsy it'll be set to an object which may
+        // be what you want but it can introduce subtle bugs.
+        opts = opts || {};
+        // ...
+    }
+
+    // good
+    function handleThings(opts = {}) {
+        // ...
+    }
     ```
 
 ## Modules
@@ -149,7 +289,43 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     import { doSomething } from './FancyModule';
     ```
 
+## Comparison Operators & Equality
+
+  - Use `===` and `!==` over `==` and `!=`.
+
+  - Use shortcuts.
+  
+    ```javascript
+    // bad
+    if (name !== '') {
+        // ...
+    }
+    
+    // good
+    if (name) {
+        // ...
+    }
+    
+    // bad
+    if (collection.length > 0) {
+        // ...
+    }
+    
+    // good
+    if (collection.length) {
+        // ...
+    }
+    ```
+
+  - Further reading: [Truth, Equality and JavaScript](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/)
+
 ## Naming things
+
+  - Use camelCase, never underscore.
+  
+  - Use PascalCase when naming constructors or classes.
+
+  - Avoid using numbered variables (e.g. i1, i2, i3).
 
   - **Quantity**: A variable/constant that stores a quantity always ends with `Count`.
 
