@@ -110,7 +110,7 @@
 
   - Click "Delete branch" after you successfully merged the pull request.
 
-  ![Delete branch after merge](https://github.com/infektweb/conventions/blob/master/docs/images/delete-branch.png)
+  ![Delete branch after merge](https://github.com/infektweb/conventions/blob/master/docs/images/delete-branch-after-merge.png)
 
 ## Github Labels
 
