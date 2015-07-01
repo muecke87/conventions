@@ -155,6 +155,21 @@
     ```javascript
     let cpuCount = os.cpus().length;
     ```
+  - **Descriptive conditions**: Any non-trivial conditions should be assigned to a descriptively named variable or function.
+  
+    ```javascript
+    // bad
+    if (password.length >= 4 && /^(?=.*\d).{4,}$/.test(password)) {
+      // ...
+    }
+    
+    // good
+    var isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
+
+    if (isValidPassword) {
+      // ...
+    }
+    ```
 
 ## Documenting code
 
