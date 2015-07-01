@@ -32,11 +32,11 @@
 ## Working on a feature or bugfix
 
   - Whenever you're working on a new feature or a fix, you should create a new branch. It's important that it's created off the `master` branch. Follow this branch naming convention: `i<issue number>-<short description>`:
-  
+
     ```sh
     git checkout -b i47-auto-save
     ```
-  
+
   - [Commit early and often](http://www.databasically.com/2011/03/14/git-commit-early-commit-often/).
 
   - Write good commit messages:
@@ -53,7 +53,7 @@
   ```
 
   - Periodically, changes made to `master` (if any) should be merged back into your branch.
-  
+
     ```sh
     git merge master
     ```
@@ -76,7 +76,7 @@
 ## Code review
 
   - Everybody in the team can review a pull request which has the label `pr:needs-review`.
-  
+
   - Checklist:
     - Is the branch mergeable?
     - Does the code work?
@@ -96,15 +96,17 @@
   - Add a comment and set the label `pr:needs-revision`, if you found something that can be improved.
 
   - Leave a `+1` or `:+1:` comment, if it passed your review and doesn't need modifications.
-  
+
 
 ## Merge and deploy
 
   - Once at least 1 and preferably 2 people have reviewed the code, the pull request can be merged into the `master` branch.
 
   - **Never merge your own code.**
-  
+
   - As soon as you merge the pull request into the `master` the tests are kicked off on our CI server and the deployment starts, if the tests pass.
+
+  ![Merge Pull Request](https://github.com/infektweb/conventions/blob/master/docs/images/merge-pull-request.png)
 
 ## Github Labels
 
