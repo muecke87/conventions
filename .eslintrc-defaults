@@ -18,6 +18,9 @@
         // Maximum depth blocks can be nested
         "max-depth": [1, 3],
 
+        // Limit maximum number of statements
+        "max-statements":[2, 15],
+
         // Disallow use of console
         "no-console": 2,
 
