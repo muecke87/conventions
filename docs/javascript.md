@@ -17,12 +17,11 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
   1. [JSDoc](#jsdoc)
 
 ## General
-  - **ES6**: Embrace ECMAScript 6 (also known as ECMAScript 2015). It's the next JavaScript standard. Some features:
+  - **ES6**: Embrace [ECMAScript 6](http://es6-features.org/) (also known as ECMAScript 2015). It's the next JavaScript standard. Some features:
     - Arrow functions
     - Classes
     - Template Strings
     - Modules
-    - Generators
     - Promises
     - ...
   - **ES5**: Use transpilers like [Babel](https://babeljs.io/) to convert the ES6 code into pure ES5, so it can be understandable by all browsers.
