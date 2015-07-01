@@ -108,6 +108,10 @@
 
   - As soon as you merge the pull request into the `master` the tests are kicked off on our CI server and the deployment starts, if the tests pass.
 
+  - Click "Delete branch" after you successfully merged the pull request.
+
+  ![Delete branch after merge](https://github.com/infektweb/conventions/blob/master/docs/images/delete-branch.png)
+
 ## Github Labels
 
 | Label              | Description                                                                     |
