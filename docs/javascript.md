@@ -8,6 +8,7 @@
 1. [Objects](#objects)
 1. [Strings](#strings)
 1. [Arrays](#arrays)
+1. [Modules](#modules)
 1. [Naming things](#naming-things)
 1. [Documenting code](#documenting-code)
   1. [JSDoc](#jsdoc)
@@ -109,6 +110,42 @@
 
     // good
     fruits.push('apple');
+    ```
+
+## Modules
+
+  - Always use ES6 modules (`import`, `export`) over a non-standard module system.
+  
+    ```javascript
+    // bad
+    const FancyModule = require('./FancyModule');
+    module.exports = FancyModule.doSomething;
+    
+    // good
+    import FancyModule from './FancyModule';
+    export default FancyModule.doSomething;
+    
+    // better
+    import { doSomething } from './FandyModule';
+    export default doSomething;
+    ```
+  - Have a consistent module order:
+    1. core / third-party modules
+    2. own modules
+  
+    ```javascript
+    // bad
+    import MyModule from './MyModule';
+    import express from 'express';
+    import path from 'path';
+    import { doSomething } from './FancyModule';
+    
+    //good
+    import path from 'path';
+    import express from 'express';
+                                        // <-- add blank line
+    import MyModule from './MyModule';
+    import { doSomething } from './FancyModule';
     ```
 
 ## Naming things
