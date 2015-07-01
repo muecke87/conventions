@@ -102,11 +102,11 @@
 
   - Once at least 1 and preferably 2 people have reviewed the code, the pull request can be merged into the `master` branch.
 
+  ![Merge Pull Request](https://github.com/infektweb/conventions/blob/master/docs/images/merge-pull-request.png)
+
   - **Never merge your own code.**
 
   - As soon as you merge the pull request into the `master` the tests are kicked off on our CI server and the deployment starts, if the tests pass.
-
-  ![Merge Pull Request](https://github.com/infektweb/conventions/blob/master/docs/images/merge-pull-request.png)
 
 ## Github Labels
 
