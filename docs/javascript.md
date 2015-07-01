@@ -1,4 +1,5 @@
 # JavaScript
+This style guide is a list of *dos* and *don'ts* for JavaScript programs and is heavily inpired by the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) and the [Node.js Style Guide](https://github.com/felixge/node-style-guide)
 
 ## Table of Contents
 
