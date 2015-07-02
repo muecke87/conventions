@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+1. [Before you begin](#before-you-begin)
 1. [Components](#components)
   1. [Testing components](#testing-components)
 1. [Actions](#actions)
@@ -9,6 +10,12 @@
 1. [Stores](#stores)
   1. [Testing stores](#testing-stores)
 1. [Further Reading](#further-reading)
+
+## Before you begin
+
+  - Learn the basics:
+    - [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
+    - [Getting To Know Flux](https://scotch.io/tutorials/getting-to-know-flux-the-react-js-architecture)
 
 ## Components
 
@@ -117,5 +124,5 @@
   - https://github.com/yahoo/fluxible.io/tree/master/tests/unit/stores
 
 ## Further Reading
-
-  - [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
+  
+  - [react-primer-draft](https://github.com/mikechau/react-primer-draft)
