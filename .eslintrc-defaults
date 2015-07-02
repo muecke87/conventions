@@ -15,11 +15,20 @@
         // Enforce quote style
         "quotes": [2, "single"],
 
+        // Limit Cyclomatic Complexity
+        "complexity": [1, 5],
+
         // Maximum depth blocks can be nested
         "max-depth": [1, 3],
 
         // Limit maximum number of statements
         "max-statements":[2, 15],
+
+        // Enforce function declarations instead of expressions
+        "func-style": [2, "declaration"],
+
+        // Disallow early use of variables but allow function declarations
+        "no-use-before-define": [2, "nofunc"],
 
         // Disallow use of console
         "no-console": 2,
