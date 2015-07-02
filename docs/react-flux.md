@@ -10,7 +10,7 @@
   1. [Testing actions](#testing-actions)
 1. [Stores](#stores)
   1. [Testing stores](#testing-stores)
-1. [Further Reading](#further-reading)
+1. [Resources](#resources)
 
 ## Before you begin
 
@@ -68,12 +68,11 @@
   console.json(textField);
   ```
 
-#### Resources
-
-  - http://simonsmith.io/unit-testing-react-components-without-a-dom/
-  - https://facebook.github.io/react/docs/test-utils.html
-  - https://github.com/robertknight/react-testing/blob/master/tests/TweetList_test.js#L73
-  - https://github.com/Granze/react-starterify/blob/master/test/components/mycomponent-test.js
+  - Resources:
+    - http://simonsmith.io/unit-testing-react-components-without-a-dom/
+    - https://facebook.github.io/react/docs/test-utils.html
+    - https://github.com/robertknight/react-testing/blob/master/tests/TweetList_test.js#L73
+    - https://github.com/Granze/react-starterify/blob/master/test/components/mycomponent-test.js
 
 ## Actions
 
@@ -93,9 +92,9 @@
     - `executeActionCalls[n].action`
     - `executeActionCalls[n].payload`
   
-#### Resources
-  - http://fluxible.io/api/actions.html#testing
-  - https://github.com/yahoo/fluxible.io/tree/master/tests/unit/actions
+  - Resources:
+    - http://fluxible.io/api/actions.html#testing
+    - https://github.com/yahoo/fluxible.io/tree/master/tests/unit/actions
 
 ## Stores
 
@@ -126,9 +125,10 @@
   })
   ```
 
-#### Resources
-  - https://github.com/yahoo/fluxible.io/tree/master/tests/unit/stores
+  - Resources:
+    - https://github.com/yahoo/fluxible.io/tree/master/tests/unit/stores
 
-## Further Reading
+## Resources
   
   - [react-primer-draft](https://github.com/mikechau/react-primer-draft)
+  - [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
