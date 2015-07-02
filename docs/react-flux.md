@@ -3,6 +3,7 @@
 ## Table of Contents
 
 1. [Before you begin](#before-you-begin)
+1. [General](#general)
 1. [Components](#components)
   1. [Testing components](#testing-components)
 1. [Actions](#actions)
@@ -15,7 +16,12 @@
 
   - Learn the basics:
     - [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
+    - Flux is an application architecture (e.g. like MVC), not a framework or a library.
     - [Getting To Know Flux](https://scotch.io/tutorials/getting-to-know-flux-the-react-js-architecture)
+  
+## General
+
+  - We use [Fluxible](http://fluxible.io/) to build our [isomorphic JavaScript](http://www.sitepoint.com/isomorphic-javascript-applications/) applications.
 
 ## Components
 
