@@ -43,7 +43,7 @@
   expect(input.type).to.equal('input');
   ```
 
-  - [console.json](https://www.npmjs.com/package/console.json) might be useful to output the generated tree in a pretty format. Don't forget to remove the import before comitting.
+  - [console.json](https://www.npmjs.com/package/console.json) might be useful to output the generated tree in a pretty format. Don't forget to remove this import before comitting your code.
   
   ```javascript
   import 'console.json';
