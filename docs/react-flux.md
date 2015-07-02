@@ -42,6 +42,7 @@
 #### Resources
 
   - http://simonsmith.io/unit-testing-react-components-without-a-dom/
+  - https://facebook.github.io/react/docs/test-utils.html
   - https://github.com/robertknight/react-testing/blob/master/tests/TweetList_test.js#L73
   - https://github.com/Granze/react-starterify/blob/master/test/components/mycomponent-test.js
 
