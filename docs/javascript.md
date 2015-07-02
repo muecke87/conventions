@@ -394,7 +394,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 
   - `@param` and `@return` can be used without a description.
 
-  - Use '@see' for further information.
+  - Use `@see` for further information.
 
   - Document errors that a function might throw with `@throw`
 
