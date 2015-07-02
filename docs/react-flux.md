@@ -12,6 +12,20 @@
 
 ## Components
 
+  - Always validate all your [prop types](https://facebook.github.io/react/docs/reusable-components.html#prop-validation).
+  > They are a convenient way to document what props your component expects.
+
+  ```javascript
+  static propTypes = {
+      type: React.PropTypes.oneOf(['text', 'password']).isRequired,
+      label: React.PropTypes.string,
+      placeholder: React.PropTypes.string,
+      onChange: React.PropTypes.func
+  }
+  ```
+  
+  - Use the prop type `React.PropTypes.node` for `this.props.children`.
+
 ### Testing components
 
   - Use [shallow rendering](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) to instantiate a component. It's the [recommended way](https://discuss.reactjs.org/t/whats-the-prefered-way-to-test-react-js-components/26) to test a component.
