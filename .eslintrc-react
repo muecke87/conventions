@@ -31,6 +31,7 @@
         // Enforce component methods order
         "react/sort-comp": [2, {
             order: [
+                "displayName",
                 "propTypes",
                 "defaultProps",
                 "contextTypes",
