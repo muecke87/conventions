@@ -235,6 +235,19 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 
 ## Functions
 
+  - Use function declarations instead of function expressions.
+  > Function declarations are named, so they're easier to identify in call stacks. Also, the whole body of a function declaration is hoisted, whereas only the reference of a function expression is hoisted. More about [function declarations vs. function expressions](https://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/)
+
+    ```javascript
+    // bad
+    const doSomething = function() {
+    };
+    
+    // good
+    function doSomething() {
+    }
+    ```
+
   - Use default parameter syntax rather than mutating function arguments.
   
     ```javascript
