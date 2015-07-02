@@ -1,4 +1,5 @@
 # [WIP] Best practices and code conventions
+> The ultimate goal is to have our whole codebase look like the same person wrote it.
 
 * [Workflow](https://github.com/infektweb/conventions/blob/master/docs/workflow.md)
 * [JavaScript](https://github.com/infektweb/conventions/blob/master/docs/javascript.md)
