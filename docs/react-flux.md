@@ -26,6 +26,8 @@
   
   - Use the prop type `React.PropTypes.node` for `this.props.children`.
 
+  - [Avoid state](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#what-components-should-have-state).
+
 ### Testing components
 
   - Use [shallow rendering](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) to instantiate a component. It's the [recommended way](https://discuss.reactjs.org/t/whats-the-prefered-way-to-test-react-js-components/26) to test a component.
