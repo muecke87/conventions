@@ -81,13 +81,13 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     ```
 
   - Add a space after the object key ´:´:
-  
+
     ```javascript
     // bad
     const item = {
       title:'Example'
     }
-    
+
     // good
     const item = {
       title: 'Example'
@@ -95,21 +95,21 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     ```
 
   - Use object method shorthand.
-  
+
     ```javascript
     // bad
     const atom = {
         value: 1,
-      
+
         addValue: function (value) {
             return atom.value + value;
         }
     };
-    
+
     // good
     const atom = {
         value: 1,
-      
+
         addValue(value) {
             return atom.value + value;
         }
@@ -117,7 +117,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     ```
 
   - Use property value shorthand.
-  
+
     ```javascript
     const lukeSkywalker = 'Luke Skywalker';
 
@@ -125,7 +125,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     const obj = {
         lukeSkywalker: lukeSkywalker,
     };
-  
+
     // good
     const obj = {
         lukeSkywalker,
@@ -133,11 +133,11 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     ```
 
   - Group your shorthand properties at the beginning of your object declaration.
-  
+
     ```javascript
     const anakinSkywalker = 'Anakin Skywalker';
     const lukeSkywalker = 'Luke Skywalker';
-  
+
     // bad
     const obj = {
         episodeOne: 1,
@@ -147,7 +147,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
         mayTheFourth: 4,
         anakinSkywalker
     };
-  
+
     // good
     const obj = {
         lukeSkywalker,
@@ -160,22 +160,22 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     ```
 
   - Use [object destructuring](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) when accessing and using multiple properties of an object.
-  
+
     ```javascript
     // bad
     function getFullName(user) {
       const firstName = user.firstName;
       const lastName = user.lastName;
-  
+
       return `${firstName} ${lastName}`;
     }
-  
+
     // good
     function getFullName(obj) {
       const { firstName, lastName } = obj;
       return `${firstName} ${lastName}`;
     }
-  
+
     // best
     function getFullName({ firstName, lastName }) {
       return `${firstName} ${lastName}`;
@@ -196,13 +196,13 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     ```
 
   - When programmatically building up strings, use [template strings](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/template_strings) instead of concatenation.
-  
+
     ```javascript
     // bad
     function sayHi(name) {
         return 'How are you, ' + name + '?';
     }
-  
+
     // good
     function sayHi(name) {
         return `How are you, ${name}?`;
@@ -242,14 +242,14 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     // bad
     const doSomething = function() {
     };
-    
+
     // good
     function doSomething() {
     }
     ```
 
   - Use default parameter syntax rather than mutating function arguments.
-  
+
     ```javascript
     // bad
     function handleThings(opts) {
@@ -269,16 +269,16 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 ## Modules
 
   - Always use ES6 modules (`import`, `export`) over a non-standard module system.
-  
+
     ```javascript
     // bad
     const FancyModule = require('./FancyModule');
     module.exports = FancyModule.doSomething;
-    
+
     // good
     import FancyModule from './FancyModule';
     export default FancyModule.doSomething;
-    
+
     // better
     import { doSomething } from './FandyModule';
     export default doSomething;
@@ -286,14 +286,14 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
   - Have a consistent module order:
     1. core / third-party modules
     2. own modules
-  
+
     ```javascript
     // bad
     import MyModule from './MyModule';
     import express from 'express';
     import path from 'path';
     import { doSomething } from './FancyModule';
-    
+
     //good
     import path from 'path';
     import express from 'express';
@@ -302,28 +302,79 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     import { doSomething } from './FancyModule';
     ```
 
+  - For module-internal imports use relative paths:
+
+    ```javascript
+    //bad
+    import GuidelineStore from 'modules/reader/stores/GuidelineStore';
+    import SearchResultItem from 'modules/reader/components/SearchResultList/SearchResultItem';
+
+    //good
+    import GuidelineStore from '../stores/GuidelineStore';
+    import SearchResultItem from './SearchResultItem';
+    ```
+
+  - For module-external imports (libraries) use absolute paths:
+
+    ```javascript
+    //bad
+    import Accordion from '../../../../elements/Accordion';
+    import fetchData from '../../../../utils/higher-order/fetchData';
+
+    //good
+    import Accordion from 'elements/Accordion';
+    import fetchData from 'utils/higher-order/fetchData';
+    ```
+
+  - Sort modules after their directory path:
+
+    ```javascript
+    import connectToStores from 'fluxible/addons/connectToStores';
+    import FluxibleComponent from 'fluxible/addons/FluxibleComponent';
+    import _ from 'lodash';
+    import React from 'react';
+    import Router from 'react-router';
+    import BrowserHistory from 'react-router/lib/BrowserHistory';
+
+    import Accordion from 'elements/Accordion';
+    import Loader from 'elements/Loader';
+    import PageHeader from 'elements/PageHeader';
+    import fetchData from 'utils/higher-order/fetchData';
+    import loadGuideline from '../actions/loadGuideline';
+    import GuidelineStore from '../stores/GuidelineStore';
+    import SearchResultItem from './SearchResultItem';
+    ```
+
+  - Add an index.js file to an exported module, which's parent folder has the same name as the module itself (prevents repetitions in import statements):
+
+    ```javascript
+    // app/elements/TextField/index.js
+    import TextField from './TextField';
+    export default TextField;
+    ```
+
 ## Comparison Operators & Equality
 
   - Use `===` and `!==` over `==` and `!=`.
 
   - Use shortcuts.
-  
+
     ```javascript
     // bad
     if (name !== '') {
         // ...
     }
-    
+
     // good
     if (name) {
         // ...
     }
-    
+
     // bad
     if (collection.length > 0) {
         // ...
     }
-    
+
     // good
     if (collection.length) {
         // ...
@@ -335,7 +386,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 ## Naming things
 
   - Use camelCase, never underscore.
-  
+
   - Use PascalCase when naming constructors or classes.
 
   - Avoid using numbered variables (e.g. i1, i2, i3).
@@ -346,13 +397,13 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     let cpuCount = os.cpus().length;
     ```
   - **Descriptive conditions**: Any non-trivial conditions should be assigned to a descriptively named variable or function.
-  
+
     ```javascript
     // bad
     if (password.length >= 4 && /^(?=.*\d).{4,}$/.test(password)) {
       // ...
     }
-    
+
     // good
     var isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
 
@@ -420,9 +471,9 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 ## Resources
 
 **ES6**
-  
+
   - [Learn ES2015](https://babeljs.io/docs/learn-es2015/)
 
 **Functional programming**
-  
+
   - [Don’t Be Scared Of Functional Programming](http://www.smashingmagazine.com/2014/07/02/dont-be-scared-of-functional-programming/)
