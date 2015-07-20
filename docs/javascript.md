@@ -321,9 +321,11 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
   - For imports which you have to go at minimum three directory levels higher for (libraries), use absolute paths:
 
     ```javascript
+    // modules/reader/pages/GuidelinePage.js
+
     //bad
-    import Accordion from '../../../../elements/Accordion';
-    import fetchData from '../../../../utils/higher-order/fetchData';
+    import Accordion from '../../../elements/Accordion';
+    import fetchData from '../../../utils/higher-order/fetchData';
 
     //good
     import Accordion from 'elements/Accordion';
