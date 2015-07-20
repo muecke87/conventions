@@ -302,19 +302,23 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     import { doSomething } from './FancyModule';
     ```
 
-  - For module-internal imports use relative paths:
+  - For imports which you have to go at maximum two directory levels higher for, use relative paths:
 
     ```javascript
+    // modules/reader/components/SearchResultList/SearchResultList.js
+
     //bad
     import GuidelineStore from 'modules/reader/stores/GuidelineStore';
+    import MainSearch from 'modules/reader/components/MainSearch';
     import SearchResultItem from 'modules/reader/components/SearchResultList/SearchResultItem';
 
     //good
-    import GuidelineStore from '../stores/GuidelineStore';
+    import GuidelineStore from '../../stores/GuidelineStore';
+    import MainSearch from '../MainSearch';
     import SearchResultItem from './SearchResultItem';
     ```
 
-  - For module-external imports (libraries) use absolute paths:
+  - For imports which you have to go at minimum three directory levels higher for (libraries), use absolute paths:
 
     ```javascript
     //bad
