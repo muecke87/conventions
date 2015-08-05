@@ -1,15 +1,22 @@
 # Best practices and code conventions
-> The ultimate goal is to have our whole codebase look like the same person wrote it.
 
-*work in progress*
+  > The ultimate goal is to have our whole codebase look like the same person wrote it.
 
-* [Workflow](https://github.com/infektweb/conventions/blob/master/docs/workflow.md)
-* [JavaScript](https://github.com/infektweb/conventions/blob/master/docs/javascript.md)
-* [CSS/SASS](https://github.com/infektweb/conventions/blob/master/docs/css.md)
-* [React + Flux](https://github.com/infektweb/conventions/blob/master/docs/react-flux.md)
+  *work in progress*
+
+  * [Workflow](https://github.com/infektweb/conventions/blob/master/docs/workflow.md)
+  * [JavaScript](https://github.com/infektweb/conventions/blob/master/docs/javascript.md)
+  * [CSS/SASS](https://github.com/infektweb/conventions/blob/master/docs/css.md)
+  * [React + Flux](https://github.com/infektweb/conventions/blob/master/docs/react-flux.md)
 
 ## ESLint
-* [eslint](https://www.npmjs.com/package/eslint)
-* [eslint-plugin-bdd](https://www.npmjs.com/package/eslint-plugin-bdd)
-* [eslint-plugin-classes](https://www.npmjs.com/package/eslint-plugin-classes)
-* [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
+
+  * Use these configs for a new project: [eslint-config-infektweb](https://github.com/infektweb/eslint-config-infektweb)
+  * Add an ESLint plugin to your IDE/editor. For example:
+    * [Atom](https://atom.io/)
+      * [linter](https://atom.io/packages/linter)
+      * [linter-eslint](https://atom.io/packages/linter-eslint)
+    * [Sublime Text](http://www.sublimetext.com/)
+      * [SublimeLinter](https://packagecontrol.io/packages/SublimeLinter)
+      * [Sublime​Linter-contrib-eslint](https://packagecontrol.io/packages/SublimeLinter-contrib-eslint)
+
