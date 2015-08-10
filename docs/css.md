@@ -10,6 +10,7 @@
   1. [States](#states)
 1. [Variables](#variables)
   1. [Naming Variables](#naming-variables)
+1. [Units](#units)
 1. [Webpack and Local Scopes](#webpack-and-local-scopes)
 
 ## General
@@ -106,6 +107,10 @@
     $color-text;
     $color-text-light;
     ```
+
+## Units
+
+  - [Prefer unitless numbers for line-height values](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#Prefer_unitless_numbers_for_line-height_values)
 
 ## Webpack and Local Scopes
   By default all CSS selectors exist within the same global scope. Every selector has the potential to have unintended side effects by targeting unwanted elements. And this can be very evil. But we can change that using Webpack's [css-loader#Local Scope](https://github.com/webpack/css-loader#local-scope)
