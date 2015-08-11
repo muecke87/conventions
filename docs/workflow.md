@@ -60,7 +60,12 @@
 
 ## Using pull requests
 
-  - It doesn't matter if you open a pull request when you start a feature or wait until the feature is implemented.
+  - It doesn't matter if you open a pull request (PR) when you start a feature or wait until the feature is implemented.
+  
+  - Add `Closes #123` or `Fixes #123` to the PR description to automatically close the referenced issue on PR merge, if wantend.
+
+  - Don't add the Github issue number to the PR title.
+  
 
 ## Submitting code for review
 
