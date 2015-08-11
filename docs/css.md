@@ -43,7 +43,7 @@
   ```
 
 ### Descedants
-  A component descendant is a class that is attached to a descendent node of a component. It's responsible for applying presentation directly to the descendant on behalf of a particular component.
+  A component descendant is a class that is attached to a descendent node of a component. It's responsible for applying presentation directly to the descendant on behalf of a particular component. Never style descendants directly via tags. Use always classes (loose coupling).
 
   Example:
   ```css
