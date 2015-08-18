@@ -266,6 +266,71 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     }
     ```
 
+  - Always prefer arrow functions.
+
+  ``` javascript
+  // bad
+  function doSomething(foo, bar, function(bla, cb) {
+      // ...
+  })
+
+  // good
+  function doSomething(foo, bar, (bla, cb) => {
+      // ...
+  })
+  ```
+
+  - Omit return statements as long as readability is not sacrificed.
+  > Whole function body has to fit onto that one line (max. ~100 characters per line), except object literals or JSX expressions.
+
+    ``` javascript
+    // bad
+    function doSomething(options, (foo) => {
+        return {
+            value1: foo.value1,
+            value2: foo.value2
+        }
+    })
+
+    // good
+    function doSomething(options, (foo) => ({
+        value1: foo.value1,
+        value2: bar.value2
+    }))
+    ```
+
+  > In these two examples, omitting the return statement doesn't make sense:
+
+    ``` javascript
+    // bad
+    axios({
+        // ...
+        // In this case it's not easy to read:
+    }).then((response) => response.data).catch((response) => {
+        // ...
+    });
+
+    // good
+    axios({
+        // ...
+        // Much better:
+    }).then((response) => {
+        return response.data;
+    }).catch((response) => {
+        // ...
+    });
+    ```
+
+    ``` javascript
+    // bad (nothing left to say)
+    Passport.use(new LocalStrategy(strategyOptions, (req, username, password, callback) => validators['passport-local'].validateUserLogin(req, username, password, callback));
+
+    // good
+    Passport.use(new LocalStrategy(strategyOptions, (req, username, password, callback) => {
+        return validators['passport-local'].validateUserLogin(req, username, password, callback);
+    }));
+    ```
+
 ## Modules
 
   - Always use ES6 modules (`import`, `export`) over a non-standard module system.
