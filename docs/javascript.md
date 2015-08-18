@@ -280,7 +280,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
   })
   ```
 
-  - Omit return statements as long as understandability is not being decreased by it.
+  - Omit return statements as long as readability is not sacrificed.
   > Whole function body has to fit onto that one line (max. ~100 characters per line), except object literals or JSX expressions.
 
     ``` javascript
