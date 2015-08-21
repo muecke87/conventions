@@ -333,9 +333,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     ```
 ### Callback
 
-  - Name callback handlers **callback**.
-  > Example:
-
+  - Name callback handlers **callback**:
     ```javascript
     export default function fetchInitialData(context, routerState, callback) {
       ...
