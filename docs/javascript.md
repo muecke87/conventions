@@ -10,6 +10,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 1. [Strings](#strings)
 1. [Arrays](#arrays)
 1. [Functions](#functions)
+  1. [Callback](#callback)
 1. [Modules](#modules)
 1. [Comparison Operators & Equality](#comparison-operators--equality)
 1. [Naming things](#naming-things)
@@ -329,6 +330,17 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     Passport.use(new LocalStrategy(strategyOptions, (req, username, password, callback) => {
         return validators['passport-local'].validateUserLogin(req, username, password, callback);
     }));
+    ```
+### Callback
+
+  - Name callback handlers **callback**.
+  > Example:
+
+    ```javascript
+    export default function fetchInitialData(context, routerState, callback) {
+      ...
+      concurrent(dataFetchers, callback);
+    }
     ```
 
 ## Modules
