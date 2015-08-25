@@ -516,21 +516,31 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 
 ### JSDoc
 
-  *work in progress*
-
   Typically we don't generate a [JSDoc](http://usejsdoc.org/) documentation when we're writing code just for internal use. But we want to make the life for JavaScript developers easier. Therefore, we use a subset of JSDoc to provide structured information about some code parts. Some IDEs will even use JSDoc to make code suggestions.
 
-  - Primitive types start with a lowercase letter: number, string, boolean, null, undefinded
+#### When to write JSDoc
 
-  - Object types start with a capital letter: Function, Object, Array, RegExp, MyCustomObject
+Everywhere, where an object/function is going further than just to be a simple implementation of an in the application widely used library/framework (e.g. React component, Flux store), has to be described with JSDoc.
 
-  - `@param` and `@return` can be used without a description.
+#### Tags
 
-  - Use `@see` for further information.
+Tag | Template | Description
+------|--------------|----------------
+@example (required) | `@example` | The @example tag allows you to provide a snippet of code that illustrates the usage of a constructor, a function (or method) or a variable.<br /><br />The @example tag is not intended to be used to generate "inline" examples, if you want this, you need to do it via HTML markup embedded within a @description block, using the <code> tag, for example.
+@param (required) | `@param {Type} varname Description` | Used with method, function and constructor calls to document the arguments of a function.<br />Type names must be enclosed in curly braces. If the type is omitted, the compiler will not type-check the parameter.
+@return (required) | `@return {Type} Description` | Used with method and function calls to document the return type. When writing descriptions for boolean parameters, prefer "Whether the component is visible" to "True if the component is visible, false otherwise". If there is no return value, do not use an@return tag.<br />Type names must be enclosed in curly braces. If the type is omitted, the compiler will not type-check the return value.
+@see (optional) | `@see Link` | Reference a lookup to another class function or method.
+@throws (required) | `@throws {exceptionType} exceptionDescription` | The @throws tag allows you to document the exception a function might throw.
 
-  - Document errors that a function might throw with `@throw`
+#### Types
 
-#### Function comments
+  - Primitive types start with a lowercase letter: `number`, `string`, `boolean`, `null`, `undefinded`
+
+  - Object types start with a capital letter: `Function`, `Object`, `Array`, `RegExp`, `MyCustomObject`
+
+#### Usage
+
+##### Function comments
 
   - A description must be provided, which starts with a sentence written in the third person singular.
 
@@ -548,6 +558,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
         // ...
     }
     ```
+
 
 ## Resources
 
