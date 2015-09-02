@@ -569,3 +569,7 @@ Tag | Template | Description
 **Functional programming**
 
   - [Don’t Be Scared Of Functional Programming](http://www.smashingmagazine.com/2014/07/02/dont-be-scared-of-functional-programming/)
+
+**Debugging**
+
+  - [memwatch: Keep an eye on your memory usage, and discover and isolate leaks](https://www.npmjs.com/package/memwatch)
