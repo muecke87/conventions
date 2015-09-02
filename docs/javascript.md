@@ -333,7 +333,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     ```
 ### Callback
 
-  - Name callback handlers **callback**:
+  - Name callback handlers always `callback` (not `cb`, `done`, `next`, etc.):
     ```javascript
     export default function fetchInitialData(context, routerState, callback) {
       ...
