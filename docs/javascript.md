@@ -465,6 +465,41 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 
   - Further reading: [Truth, Equality and JavaScript](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/)
 
+## Logging & Error handling
+
+  - Use Utility app\utils\logger\
+
+  Available log-functions are 'debug', 'warn' and 'logError'
+
+  Dont use the exported logger-object directly! It's only exported so it can be used for unit tests.
+
+  -Use it with Promises
+
+  ```javascript
+  import { logError } from 'utils/logger';
+  ...
+
+  return axios({
+      data: method === 'get' ? undefined : data  
+      ...
+  }).then((response) => {
+      return response.data;
+  }).catch((response) => {
+      logError(`callApi error ${response} ${method} ${url} ${data}`);
+      return Promise.reject();
+  });
+  ```
+
+  - If Promises are not available, then use it with CallBacks
+
+  ```javascript
+  Router.run(app.getComponent(), location, (error, initialState) => {
+         fetchData(context, initialState, (err) => {
+             if (err) {
+                 logError(`fetchData error ${err}`);
+             }
+  ```
+
 ## Naming things
 
   - Use camelCase, never underscore.
@@ -493,41 +528,6 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
       // ...
     }
     ```
-
-## Logging & Error handling
-
-- Use Utility app\utils\logger\
-
-Available log-functions are 'debug', 'warn' and 'logError'
-
-Dont use the exported logger-object directly! It's only exported so it can be used for unit tests.
-
--Use it with Promises
-
-```javascript
-import { logError } from 'utils/logger';
-...
-
-return axios({
-    data: method === 'get' ? undefined : data  
-    ...
-}).then((response) => {
-    return response.data;
-}).catch((response) => {
-    logError(`callApi error ${response} ${method} ${url} ${data}`);
-    return Promise.reject();
-});
-```
-
-- If Promises are not available, then use it with CallBacks
-
-```javascript
-Router.run(app.getComponent(), location, (error, initialState) => {
-       fetchData(context, initialState, (err) => {
-           if (err) {
-               logError(`fetchData error ${err}`);
-           }
-```
 
 ## Documenting code
 
