@@ -473,7 +473,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 
   Dont use the exported logger-object directly! It's only exported so it can be used for unit tests.
 
-  -Use it with Promises
+  - Use it with Promises
 
   ```javascript
   import { logError } from 'utils/logger';
