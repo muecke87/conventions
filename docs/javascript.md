@@ -467,28 +467,24 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 
 ## Logging & Error handling
 
-  - If ECMAScript 6 is available then use Promises
+  - Whenever possible, use ES6 Promies
 
   ```javascript
-  return axios({
-      data: method === 'get' ? undefined : data  
-      ...
-  }).then((response) => {
-      return response.data;
-  }).catch((response) => {
-      logError(`callApi error ${response} ${method} ${url} ${data}`);
-      return Promise.reject();
-  });
+  return myAsyncFunction()
+      .then(otherAsyncFunction)
+      .catch(myErrorHandlingFunction);
   ```
 
-  - If ECMAScript 6 is not available, then use CallBacks
+  - If ES6 Promises are not available (ES5 codebase, third party libaries), then use [error-first callbacks](https://www.joyent.com/developers/node/design/errors)
 
   ```javascript
   Router.run(app.getComponent(), location, (error, initialState) => {
-         fetchData(context, initialState, (err) => {
-             if (err) {
-                 logError(`fetchData error ${err}`);
-             }
+      if (error) {
+        // some error handling
+      }
+      
+      // ...
+  });
   ```
 
 ## Naming things
