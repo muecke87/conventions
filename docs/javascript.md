@@ -13,6 +13,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
   1. [Callback](#callback)
 1. [Modules](#modules)
 1. [Comparison Operators & Equality](#comparison-operators--equality)
+1. [Logging & Error handling](#logging-and-error-handling)
 1. [Naming things](#naming-things)
 1. [Documenting code](#documenting-code)
   1. [JSDoc](#jsdoc)
@@ -463,6 +464,28 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     ```
 
   - Further reading: [Truth, Equality and JavaScript](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/)
+
+## Logging & Error handling
+
+  - Whenever possible, use ES6 Promies
+
+  ```javascript
+  return myAsyncFunction()
+      .then(otherAsyncFunction)
+      .catch(myErrorHandlingFunction);
+  ```
+
+  - If ES6 Promises are not available (ES5 codebase, third party libaries), then use [error-first callbacks](https://www.joyent.com/developers/node/design/errors)
+
+  ```javascript
+  Router.run(app.getComponent(), location, (error, initialState) => {
+      if (error) {
+        // some error handling
+      }
+      
+      // ...
+  });
+  ```
 
 ## Naming things
 
