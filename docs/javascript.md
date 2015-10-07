@@ -467,18 +467,9 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 
 ## Logging & Error handling
 
-  - Use Utility app\utils\logger\
-
-  Available log-functions are 'debug', 'warn' and 'logError'
-
-  Dont use the exported logger-object directly! It's only exported so it can be used for unit tests.
-
-  - Use it with Promises
+  - If ECMAScript 6 is available then use Promises
 
   ```javascript
-  import { logError } from 'utils/logger';
-  ...
-
   return axios({
       data: method === 'get' ? undefined : data  
       ...
@@ -490,7 +481,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
   });
   ```
 
-  - If Promises are not available, then use it with CallBacks
+  - If ECMAScript 6 is not available, then use CallBacks
 
   ```javascript
   Router.run(app.getComponent(), location, (error, initialState) => {
