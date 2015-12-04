@@ -137,6 +137,10 @@ CREATE FUNCTION get_current_revision_of_page(has_id INTEGER) RETURNS INTEGER AS 
 $$ LANGUAGE SQL;
 ```
 
+####Function Name
+* Prefix 'assert_' for basic 'unit test like' functions
+* Prefix 'test_' for 'test' functions
+
 ## Documenting Code
 * Use standard SQL comments like '-- '.
 * Use the following doc block for functions:
