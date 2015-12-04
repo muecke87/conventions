@@ -1,4 +1,4 @@
- JavaScript
+DB/SQL
 This style guide is a list of *dos* and *don'ts* for DB/SQL related code.
 
 ## Table of Contents
