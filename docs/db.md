@@ -1,4 +1,4 @@
-SQL/PLSQL
+# SQL/PLSQL
 This style guide is a list of *dos* and *don'ts* for SQL/PLSQL related code.
 
 ## Table of Contents
