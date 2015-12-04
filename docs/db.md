@@ -139,7 +139,7 @@ $$ LANGUAGE SQL;
 
 ## Documenting Code
 * Use standard SQL comments like '-- '.
-* Use the following doc blo for functions:
+* Use the following doc block for functions:
 ```
 --
 -- STORED PROCEDURE
