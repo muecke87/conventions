@@ -143,20 +143,21 @@ $$ LANGUAGE SQL;
 ```
 --
 -- STORED PROCEDURE
---     Name of stored procedure.
+--   get_current_revision_of_detail_item_with_state(has_id INTEGER, has_state STATE)
 --
 -- DESCRIPTION
---     Business description of the stored procedure's functionality.
+--   Retrieve latest revision of a detail item which has a specific state (ENUM('CHANGE', 'VALID', 'DELETE'))
 --
 -- PARAMETERS
---     @InputParameter1
---         * Description of @InputParameter1 and how it is used.
+--   @has_id
+--     * id of page
+--   @has_state
+--     * filter state
 --
 -- RETURN VALUE
---         0 - No Error.
---     -1000 - Description of cause of non-zero return value.
+--   INTEGER
 --
--- PROGRAMMING NOTES
---     Gotchas and other notes for your fellow programmer.
+-- Example
+--   SELECT get_current_revision_of_page_with_state(53, ('VALID')::STATE) AS REVISION
 --
 ```
