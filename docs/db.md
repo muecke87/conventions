@@ -1,5 +1,5 @@
-DB/SQL
-This style guide is a list of *dos* and *don'ts* for DB/SQL related code.
+SQL/PLSQL
+This style guide is a list of *dos* and *don'ts* for SQL/PLSQL related code.
 
 ## Table of Contents
 
@@ -65,21 +65,22 @@ CREATE OR REPLACE FUNCTION convertPageVersionState(integer) RETURNS STATE AS $$
 $$ LANGUAGE plpgsql;
 
 TRUNCATE TABLE page;
-INSERT INTO page
-  SELECT
-    id AS page_id,
-    nextval('page_item_id') AS item_id,
-    majorversion AS revision,
-    title,
-    convertPageVersionState(state) AS state,
-    copiedfrom,
-    changedby,
-    responsibleauthor,
-    reviewinterval,
-    datereviewed,
-    datecreated
-  FROM
-    guidelines.guidelines_pages;
+INSERT INTO
+  page
+SELECT
+  id AS page_id,
+  nextval('page_item_id') AS item_id,
+  majorversion AS revision,
+  title,
+  convertPageVersionState(state) AS state,
+  copiedfrom,
+  changedby,
+  responsibleauthor,
+  reviewinterval,
+  datereviewed,
+  datecreated
+FROM
+  guidelines.guidelines_pages;
 
 DROP FUNCTION IF EXISTS convertPageVersionState(integer);
 ```
@@ -91,21 +92,71 @@ DROP FUNCTION IF EXISTS convertPageVersionState(integer);
 
 ## Naming things
 ### Custom Datatypes
-Use upper case for custim data types
+Use upper case for custim data types:
 ```
 CREATE TYPE STATE AS ENUM ('CHANGE', 'VALID', 'DELETE');
 ```
 
-### Tables
+### Table
 * Singular name
 * No prfixes like "guideline_..."
 * Table name for M:N relations -> M_N (eg. page_detail)
 
-### Constraints
-* ...
+### Constraint
+* Prefix UNIQUE constraints with 'unique':
+```
+ALTER TABLE page_detail ADD CONSTRAINT unique_page_detail_revision UNIQUE (page_id, detail_id, revision);
+```
 
-### Keys
-* ...
+* Prefix INDEX constraints with 'index':
+```
+CREATE INDEX index_page_detail_title ON page_detail USING btree (lower(title));
+```
+
+### Key
+* Suffix primary keys with '_id':
+```
+...
+page_detail_id BIGSERIAL NOT NULL PRIMARY KEY,
+...
+```
+
+* Use same attribute name for freign keys in referencing table as referenced table:
+```
+...
+page_id BIGINT NOT NULL REFERENCES page ON DELETE CASCADE,
+detail_id BIGINT NOT NULL REFERENCES detail ON DELETE CASCADE,
+...
+```
+###PLPGSQL/PLV8 Function and Variable
+Lowercase, words seperated with '_'
+```
+DROP FUNCTION IF EXISTS get_current_revision_of_page(has_id INTEGER);
+CREATE FUNCTION get_current_revision_of_page(has_id INTEGER) RETURNS INTEGER AS $$
+  SELECT COALESCE((SELECT revision FROM page WHERE item_id = (SELECT item_id FROM page WHERE page_id = has_id) ORDER BY revision DESC LIMIT 1), 0)
+$$ LANGUAGE SQL;
+```
 
 ## Documenting Code
-...
+* Use standard SQL comments like '-- '.
+* Use the following doc blo for functions:
+```
+--
+-- STORED PROCEDURE
+--     Name of stored procedure.
+--
+-- DESCRIPTION
+--     Business description of the stored procedure's functionality.
+--
+-- PARAMETERS
+--     @InputParameter1
+--         * Description of @InputParameter1 and how it is used.
+--
+-- RETURN VALUE
+--         0 - No Error.
+--     -1000 - Description of cause of non-zero return value.
+--
+-- PROGRAMMING NOTES
+--     Gotchas and other notes for your fellow programmer.
+--
+```
