@@ -129,11 +129,16 @@ detail_id BIGINT NOT NULL REFERENCES detail ON DELETE CASCADE,
 ...
 ```
 ###PLPGSQL/PLV8 Function and Variable
-Lowercase, words seperated with '_'
+Function and variable names are:
+* lowercase
+* seperated with '_'
+Example:
 ```
 DROP FUNCTION IF EXISTS get_current_revision_of_page(has_id INTEGER);
 CREATE FUNCTION get_current_revision_of_page(has_id INTEGER) RETURNS INTEGER AS $$
-  SELECT COALESCE((SELECT revision FROM page WHERE item_id = (SELECT item_id FROM page WHERE page_id = has_id) ORDER BY revision DESC LIMIT 1), 0)
+  SELECT COALESCE((SELECT revision FROM page WHERE item_id = (
+    SELECT item_id FROM page WHERE page_id = has_id
+  ) ORDER BY revision DESC LIMIT 1), 0)
 $$ LANGUAGE SQL;
 ```
 
