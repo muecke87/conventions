@@ -6,6 +6,7 @@
 
   * [Workflow](https://github.com/infektweb/conventions/blob/master/docs/workflow.md)
   * [JavaScript](https://github.com/infektweb/conventions/blob/master/docs/javascript.md)
+  * [DB](https://github.com/infektweb/conventions/blob/master/docs/db.md)
   * [CSS/SASS](https://github.com/infektweb/conventions/blob/master/docs/css.md)
   * [React + Flux](https://github.com/infektweb/conventions/blob/master/docs/react-flux.md)
 
