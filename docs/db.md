@@ -15,6 +15,7 @@ This style guide is a list of *dos* and *don'ts* for SQL/PLSQL related code.
 * don't prefix tables
 * table names singular
 * group related statements together
+* Immutability: DB tuples are immutable! In general this means we do not update tuples - instead we add a new tuple, with an incremented revision number (but the same item_id). 
 
 Example:
 ```
