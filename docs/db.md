@@ -7,44 +7,30 @@ This style guide is a list of *dos* and *don'ts* for SQL/PLSQL related code.
 1. [Code Formatting](#code-formatting)
 1. [Naming things](#naming-things)
 1. [Documenting code](#documenting-code)
+1. [Immutability of tuples](#immutability-of-tuples)
 
 ## General
 * capitalize reserved words (CREATE, FUNCTION, INDEX, TABLE, SELECT, DELETE etc.), datatypes (INTEGER, BIGINT, STATE, etc.)
 * main keywords on new line
 * always use short meaningful table names, attrs etc.
 * don't prefix tables
-* table names singular
+* table names in plural
 * group related statements together
-* Immutability: DB tuples are immutable! In general this means we do not update tuples - instead we add a new tuple, with an incremented revision number (but the same item_id). 
 
 Example:
 ```
-DROP TYPE IF EXISTS STATE;
-CREATE TYPE STATE AS ENUM ('CHANGE', 'VALID', 'DELETE');
-
-DROP SEQUENCE IF EXISTS page_item_id;
-CREATE SEQUENCE page_item_id START 1;
-
-DROP TABLE IF EXISTS page;
-CREATE TABLE page (
-  page_id BIGSERIAL NOT NULL PRIMARY KEY,
+DROP TABLE IF EXISTS guidelines;
+CREATE TABLE guidelines (
+  id BIGSERIAL NOT NULL PRIMARY KEY,
   item_id SMALLINT NOT NULL DEFAULT 1,
   revision SMALLINT NOT NULL DEFAULT 0,
   title TEXT NOT NULL,
-  state state NOT NULL DEFAULT ('CHANGE')::STATE,
-  copiedfrom BIGINT,
-  createdby BIGINT NOT NULL, 
-  responsibleauthor BIGINT NOT NULL, 
-  datereviewed TIMESTAMP WITH TIME ZONE,
-  datecreated TIMESTAMP WITH TIME ZONE
+  state STATE NOT NULL DEFAULT ('CHANGED')::STATE,
+  created_by_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
+  responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
+  review_interval BIGINT NOT NULL DEFAULT (365)::BIGINT,
+  date_created TIMESTAMP WITH TIME ZONE
 ) WITH ( OIDS=FALSE );
-
-ALTER TABLE page ADD CONSTRAINT unique_page_item_revision UNIQUE (item_id, revision);
-
--- Note: convert indices to lower case for case-insensitice search
-CREATE INDEX index_page_title ON page USING btree (lower(title));
-
-CREATE INDEX index_page_state ON page USING btree (state);
 
 CREATE OR REPLACE FUNCTION convertPageVersionState(integer) RETURNS STATE AS $$
   BEGIN
@@ -64,26 +50,6 @@ CREATE OR REPLACE FUNCTION convertPageVersionState(integer) RETURNS STATE AS $$
     END CASE;
   END;
 $$ LANGUAGE plpgsql;
-
-TRUNCATE TABLE page;
-INSERT INTO
-  page
-SELECT
-  id AS page_id,
-  nextval('page_item_id') AS item_id,
-  majorversion AS revision,
-  title,
-  convertPageVersionState(state) AS state,
-  copiedfrom,
-  changedby,
-  responsibleauthor,
-  reviewinterval,
-  datereviewed,
-  datecreated
-FROM
-  guidelines.guidelines_pages;
-
-DROP FUNCTION IF EXISTS convertPageVersionState(integer);
 ```
 
 ## Code Formatting
@@ -93,42 +59,55 @@ DROP FUNCTION IF EXISTS convertPageVersionState(integer);
 
 ## Naming things
 ### Custom Datatypes
-Use upper case for custim data types:
+Use uppercase for custom data types:
 ```
-CREATE TYPE STATE AS ENUM ('CHANGE', 'VALID', 'DELETE');
+CREATE TYPE STATE AS ENUM ('CHANGED', 'VALIDATED', 'DELETED');
 ```
 
 ### Table
-* Singular name
+* Names in plural
 * No prfixes like "guideline_..."
-* Table name for M:N relations -> M_N (eg. page_detail)
+* Table name for M:N relations -> M_N (eg. guidelines_details)
+
+### Attribute
+* delim attributes with multiple words with '_'
+```
+created_by_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
+responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
+```
 
 ### Constraint
 * Prefix UNIQUE constraints with 'unique':
 ```
-ALTER TABLE page_detail ADD CONSTRAINT unique_page_detail_revision UNIQUE (page_id, detail_id, revision);
+ALTER TABLE guidelines_detail ADD CONSTRAINT unique_guidelines_details_revision UNIQUE (guidelines_id, details_id);
 ```
 
 * Prefix INDEX constraints with 'index':
 ```
-CREATE INDEX index_page_detail_title ON page_detail USING btree (lower(title));
+CREATE INDEX index_guidelines_details_title ON page_detail USING btree (lower(title));
 ```
 
 ### Key
-* Suffix primary keys with '_id':
+* PK is always named 'id':
 ```
 ...
-page_detail_id BIGSERIAL NOT NULL PRIMARY KEY,
+id BIGSERIAL NOT NULL PRIMARY KEY,
 ...
 ```
 
-* Use same attribute name for freign keys in referencing table as referenced table:
+* FK names consists of the referenced table name and the PK (usually 'id'), with an otional prefix describing the role of the attribue:
 ```
 ...
-page_id BIGINT NOT NULL REFERENCES page ON DELETE CASCADE,
-detail_id BIGINT NOT NULL REFERENCES detail ON DELETE CASCADE,
+guidelines_id BIGINT NOT NULL REFERENCES guidelines(id) ON DELETE CASCADE,
 ...
 ```
+
+```
+...
+responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
+...
+```
+
 ###PLPGSQL/PLV8 Function and Variable
 Function and variable names are:
 * lowercase
@@ -138,7 +117,7 @@ Example:
 DROP FUNCTION IF EXISTS get_current_revision_of_page(has_id INTEGER);
 CREATE FUNCTION get_current_revision_of_page(has_id INTEGER) RETURNS INTEGER AS $$
   SELECT COALESCE((SELECT revision FROM page WHERE item_id = (
-    SELECT item_id FROM page WHERE page_id = has_id
+    SELECT item_id FROM page WHERE id = has_id
   ) ORDER BY revision DESC LIMIT 1), 0)
 $$ LANGUAGE SQL;
 ```
@@ -168,6 +147,9 @@ $$ LANGUAGE SQL;
 --   INTEGER
 --
 -- Example
---   SELECT get_current_revision_of_page_with_state(53, ('VALID')::STATE) AS REVISION
+--   SELECT get_current_revision_of_page_with_state(53, ('VALIDATED')::STATE) AS REVISION
 --
 ```
+
+## Immutability of tuples
+DB tuples are immutable! In general this means we do not update tuples - instead we add a new tuple, with an incremented revision number (but the same item_id). 
