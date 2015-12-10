@@ -36,17 +36,17 @@ CREATE OR REPLACE FUNCTION convertPageVersionState(integer) RETURNS STATE AS $$
   BEGIN
     CASE $1
       WHEN 0 THEN
-        RETURN ('CHANGE')::STATE;
+        RETURN ('CHANGED')::STATE;
       WHEN 1 THEN
-        RETURN ('CHANGE')::STATE;
+        RETURN ('CHANGED')::STATE;
       WHEN 2 THEN
-        RETURN ('VALID')::STATE;
+        RETURN ('VALIDATED')::STATE;
       WHEN 3 THEN
-        RETURN ('CHANGE')::STATE;
+        RETURN ('CHANGED')::STATE;
       WHEN 4 THEN
-        RETURN ('CHANGE')::STATE;
+        RETURN ('CHANGED')::STATE;
       ELSE
-        RETURN ('DELETE')::STATE;
+        RETURN ('DELETED')::STATE;
     END CASE;
   END;
 $$ LANGUAGE plpgsql;
