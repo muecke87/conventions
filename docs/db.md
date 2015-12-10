@@ -95,7 +95,7 @@ id BIGSERIAL NOT NULL PRIMARY KEY,
 ...
 ```
 
-* FK names consists of the referenced table name and the PK (usually 'id'), with an otional prefix describing the role of the attribue:
+* FK names consists of the referenced table name and the PK (usually 'id'), with an optional prefix describing the role of the attribue:
 ```
 ...
 guidelines_id BIGINT NOT NULL REFERENCES guidelines(id) ON DELETE CASCADE,
