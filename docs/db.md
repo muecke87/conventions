@@ -70,38 +70,36 @@ CREATE TYPE STATE AS ENUM ('CHANGED', 'VALIDATED', 'DELETED');
 * Table name for M:N relations -> M_N (eg. guidelines_details)
 
 ### Attribute
-* delim attributes with multiple words with '_'
+__Delimiter for multiple words__ in attribute names is '_':
 ```
 created_by_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
 responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
 ```
 
 ### Constraint
-* Prefix UNIQUE constraints with 'unique':
+__Prefix UNIQUE constraints__ with 'unique':
 ```
 ALTER TABLE guidelines_detail ADD CONSTRAINT unique_guidelines_details_revision UNIQUE (guidelines_id, details_id);
 ```
-
-* Prefix INDEX constraints with 'index':
+__Prefix INDEX constraints__ with 'index':
 ```
 CREATE INDEX index_guidelines_details_title ON page_detail USING btree (lower(title));
 ```
 
 ### Key
-* PK is always named 'id':
+__PK__ is always named 'id':
 ```
 ...
 id BIGSERIAL NOT NULL PRIMARY KEY,
 ...
 ```
-
-* FK names consists of the referenced table name and the PK (usually 'id'), with an optional prefix describing the role of the attribue:
+__FK__ names consists of the referenced table name and the PK (usually 'id'), with an optional prefix describing the role of the attribue:
 ```
 ...
 guidelines_id BIGINT NOT NULL REFERENCES guidelines(id) ON DELETE CASCADE,
 ...
 ```
-
+or:
 ```
 ...
 responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
