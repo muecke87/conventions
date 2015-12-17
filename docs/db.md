@@ -25,7 +25,7 @@ CREATE TABLE guidelines (
   item_id SMALLINT NOT NULL DEFAULT 1,
   revision SMALLINT NOT NULL DEFAULT 0,
   title TEXT NOT NULL,
-  state STATE NOT NULL DEFAULT ('CHANGED')::STATE,
+  state GUIDELINE_STATE NOT NULL DEFAULT ('CHANGED')::STATE,
   created_by_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
   responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
   review_interval BIGINT NOT NULL DEFAULT (365)::BIGINT,
@@ -59,10 +59,13 @@ $$ LANGUAGE plpgsql;
 
 ## Naming things
 ### Custom Datatypes
-Use uppercase for custom data types:
+* Use uppercase for custom data types:
 ```
 CREATE TYPE STATE AS ENUM ('CHANGED', 'VALIDATED', 'DELETED');
 ```
+
+* If the enum is intended for a specific relation (singular) only prefix the relation name to indicate its specificity:
+CREATE TYPE GUIDELINE_STATE AS ENUM ('CHANGED', 'IN_VALIDATION', 'VALIDATED', 'DELETED');
 
 ### Table
 * Names in plural
@@ -130,22 +133,19 @@ $$ LANGUAGE SQL;
 ```
 --
 -- STORED PROCEDURE
---   get_current_revision_of_detail_item_with_state(has_id INTEGER, has_state STATE)
+--   assert_equal_msg(value BOOLEAN, msg TEXT)
 --
 -- DESCRIPTION
---   Retrieve latest revision of a detail item which has a specific state (ENUM('CHANGE', 'VALID', 'DELETE'))
+--   Raises a NOTICE upon success and an EXCEPTION in case of an error
 --
 -- PARAMETERS
---   @has_id
---     * id of page
---   @has_state
---     * filter state
+--   @value
+--     * RAISE an NOTICE when TRUE, RAISE an EXCEPTION when FALSE
+--   @msg
+--     * Message will be added upon RAISE of event
 --
 -- RETURN VALUE
---   INTEGER
---
--- Example
---   SELECT get_current_revision_of_page_with_state(53, ('VALIDATED')::STATE) AS REVISION
+--   VOID
 --
 ```
 
