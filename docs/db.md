@@ -18,7 +18,7 @@ This style guide is a list of *dos* and *don'ts* for SQL/PLSQL related code.
 * group related statements together
 
 Example:
-```
+```sql
 DROP TABLE IF EXISTS guidelines;
 CREATE TABLE guidelines (
   id BIGSERIAL NOT NULL PRIMARY KEY,
@@ -60,7 +60,7 @@ $$ LANGUAGE plpgsql;
 ## Naming things
 ### Custom Datatypes
 * Use uppercase for custom data types:
-```
+```sql
 CREATE TYPE STATE AS ENUM ('CHANGED', 'VALIDATED', 'DELETED');
 ```
 
@@ -74,47 +74,56 @@ CREATE TYPE GUIDELINE_STATE AS ENUM ('CHANGED', 'IN_VALIDATION', 'VALIDATED', 'D
 
 ### Attribute
 __Delimiter for multiple words__ in attribute names is '_':
-```
+```sql
 created_by_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
 responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
 ```
 
 ### Constraint
 __Prefix UNIQUE constraints__ with 'unique':
-```
+```sql
 ALTER TABLE guidelines_detail ADD CONSTRAINT unique_guidelines_details_revision UNIQUE (guidelines_id, details_id);
 ```
+
 __Prefix INDEX constraints__ with 'index':
-```
+```sql
 CREATE INDEX index_guidelines_details_title ON page_detail USING btree (lower(title));
 ```
 
 ### Key
 __PK__ is always named 'id':
-```
+```sql
 ...
 id BIGSERIAL NOT NULL PRIMARY KEY,
 ...
 ```
 __FK__ names consists of the referenced table name and the PK (usually 'id'), with an optional prefix describing the role of the attribue:
-```
+```sql
 ...
 guidelines_id BIGINT NOT NULL REFERENCES guidelines(id) ON DELETE CASCADE,
 ...
 ```
+
 or:
-```
+
+```sql
 ...
 responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
 ...
 ```
 
-###PLPGSQL/PLV8 Function and Variable
+### SEQUENCE
+__Sequence__ is always postfixed with '_seq':
+```sql
+CREATE SEQUENCE guidelines_item_seq START 10000;
+```
+
+### PLPGSQL/PLV8 Function and Variable
 Function and variable names are:
 * lowercase
 * seperated with '_'
 Example:
-```
+```sql
 DROP FUNCTION IF EXISTS get_current_revision_of_page(has_id INTEGER);
 CREATE FUNCTION get_current_revision_of_page(has_id INTEGER) RETURNS INTEGER AS $$
   SELECT COALESCE((SELECT revision FROM page WHERE item_id = (
@@ -123,14 +132,14 @@ CREATE FUNCTION get_current_revision_of_page(has_id INTEGER) RETURNS INTEGER AS 
 $$ LANGUAGE SQL;
 ```
 
-####Function Name
+#### Function Name
 * Prefix 'assert_' for basic 'unit test like' functions
 * Prefix 'test_' for 'test' functions
 
 ## Documenting Code
 * Use standard SQL comments like '-- '.
 * Use the following doc block for functions:
-```
+```sql
 --
 -- STORED PROCEDURE
 --   assert_equal_msg(value BOOLEAN, msg TEXT)
@@ -150,4 +159,4 @@ $$ LANGUAGE SQL;
 ```
 
 ## Immutability of tuples
-DB tuples are immutable! In general this means we do not update tuples - instead we add a new tuple, with an incremented revision number (but the same item_id). 
+DB tuples are immutable! In general this means we do not update tuples - instead we add a new tuple, with an incremented revision number (but the same item_id).
