@@ -115,9 +115,7 @@ responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
 ### SEQUENCE
 __Sequence__ is always named 'seq':
 ```sql
-...
 CREATE SEQUENCE guidelines_item_seq START 10000;
-...
 ```
 
 ### PLPGSQL/PLV8 Function and Variable
