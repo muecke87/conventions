@@ -113,7 +113,7 @@ responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
 ```
 
 ### SEQUENCE
-__Sequence__ is always named 'seq':
+__Sequence__ is always postfixed with '_seq':
 ```sql
 CREATE SEQUENCE guidelines_item_seq START 10000;
 ```
