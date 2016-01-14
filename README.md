@@ -12,6 +12,7 @@
 
 ## ESLint
 
+  * JavaScript linter
   * Use these configs for a new project: [eslint-config-infektweb](https://github.com/infektweb/eslint-config-infektweb)
   * Add an ESLint plugin to your IDE/editor. For example:
     * [Atom](https://atom.io/)
