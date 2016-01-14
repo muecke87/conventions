@@ -25,7 +25,7 @@
 
   * linter for bash scripts
   * Install [shellcheck](https://github.com/koalaman/shellcheck#installing)
-  * Add an shellcheck-linter plugin to your IDE/editor. For example:
+  * Add a shellcheck-linter plugin to your IDE/editor. For example:
     * [Atom](https://atom.io/)
       * [linter-shellcheck](https://atom.io/packages/linter-shellcheck)
     * [Sublime Text](http://www.sublimetext.com/)
