@@ -23,12 +23,9 @@
 
 ## Shellcheck
 
-  Used to lint bash scripts.
-
-  * Install shellcheck [shellcheck](https://github.com/koalaman/shellcheck#installing)
+  * linter for bash scripts
+  * Install [shellcheck](https://github.com/koalaman/shellcheck#installing)
     * [Atom](https://atom.io/)
-      * First you have to install the [linter](https://atom.io/packages/linter) from above.
-        * Add plugin [linter-shellcheck](https://atom.io/packages/linter-shellcheck)
+      * Add plugin [linter-shellcheck](https://atom.io/packages/linter-shellcheck)
     * [Sublime Text](http://www.sublimetext.com/)
-      * First you have to install the [SublimeLinter](https://packagecontrol.io/packages/SublimeLinter) from above.
-        * Add plugin [SublimeLinter-shellcheck](https://packagecontrol.io/packages/SublimeLinter-shellcheck)
+      * Add plugin [SublimeLinter-shellcheck](https://packagecontrol.io/packages/SublimeLinter-shellcheck)
