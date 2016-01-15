@@ -9,7 +9,7 @@
   * [DB](https://github.com/infektweb/conventions/blob/master/docs/db.md)
   * [CSS/SASS](https://github.com/infektweb/conventions/blob/master/docs/css.md)
   * [React + Flux](https://github.com/infektweb/conventions/blob/master/docs/react-flux.md)
-  * [Shellscript (BASH)](/docs/shellscript.md)
+  * [Shellscript (BASH)](docs/shellscript.md)
 
 ## ESLint
 

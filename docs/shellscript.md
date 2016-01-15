@@ -60,7 +60,7 @@ Exception:
 
 Altough they are very similar `"${*}"` is to prefer since it gives a string and not an array.
 
-Example
+Example:
 
     demo() {
         local all_arguments=${*}
