@@ -79,7 +79,7 @@ Exception:
 [[ -f $file ]] && echo "$file is a file"
 ```
 
-### if statements. prefer `[[` over `[`
+### if statements: prefer `[[` over `[`
 
 `[[` is less error prone. The subtle differences are explained here: http://mywiki.wooledge.org/BashFAQ/031
 
