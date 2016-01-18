@@ -129,6 +129,17 @@ ln --force --symbolic
 
 ## File layout
 
+### Use 'bash' as shell
+
+Always use the bash shell (not others like sh/ksh/zsh/dash/..).  
+(Never use `#!/bin/sh`.)
+
+```bash
+#!/bin/bash
+
+ls -l
+```
+
 ## Provide a file header
 
 Example:
