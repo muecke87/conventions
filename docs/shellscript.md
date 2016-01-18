@@ -17,60 +17,68 @@ Variables intended as constants should be declared with `readonly` and uppercase
 
 Variables defined inside functions should be declared with `local` to restrict scope to current function.
 
-    foo() {
-        local bar=100
-        
-        echo "hello: $bar"
-    }
+```bash
+foo() {
+    local bar=100
     
-    foo 
-    # prints: hello 100
-    echo "hello: $bar" 
-    # prints: hello
+    echo "hello: $bar"
+}
+
+foo 
+# prints: hello 100
+echo "hello: $bar" 
+# prints: hello
+```
 
 You can use both together with `local -r`
 
-    foo() {
-        local -r BAR=100
-    
-        # the following statement will fail:
-        BAR=200
-    
-        echo "hello: $BAR"
-    }
+```bash
+foo() {
+    local -r BAR=100
 
-    foo 
-    # prints: hello: 100
+    # the following statement will fail:
+    BAR=200
 
-    echo "hello outside: $BAR" 
-    # prints: hello outside:
+    echo "hello: $BAR"
+}
+
+foo 
+# prints: hello: 100
+
+echo "hello outside: $BAR" 
+# prints: hello outside:
+```
 
 ## Using variables: with apostrophes and brackes
 
 Quote variable in apostrophes and wrapp in brackets:
 
-    echo "${foo}"
-    cp "${foo}" "${bar}"
+```bash
+echo "${foo}"
+cp "${foo}" "${bar}"
+```
 
 * `{}` clearly separates variable names from other characters
 * `""` prevents splitting in multiple arguments if function argument contains spaces (see $IFS)
 
 Exception:
 
-    # for [[ .. ]] its okay to not use apostrophes, since WordSplitting is disabled.
-    [[ -f $file ]] && echo "$file is a file"
+```
+# for [[ .. ]] its okay to not use apostrophes, since WordSplitting is disabled.
+[[ -f $file ]] && echo "$file is a file"
+```
 
 ## if statements. prefer `[[` over `[`
 
 `[[` is less error prone. The subtle differences are explained here: http://mywiki.wooledge.org/BashFAQ/031
 
-
-    # bad
-    [ -f "$file" ] && echo "$file is a file"
-     
-     # good
-    [[ -f $file ]] && echo "$file is a file"
-
+```bash
+# bad
+[ -f "$file" ] && echo "$file is a file"
+ 
+ # good
+[[ -f $file ]] && echo "$file is a file"
+```
 
 ## Use `"${*}"` instead of `"${@}"`
 
@@ -78,14 +86,16 @@ Altough they are very similar `"${*}"` is to prefer since it gives a string and 
 
 Example:
 
-    demo() {
-        local all_arguments=${*}
-        
-        echo "${all_arguments}"
-    }
+```bash
+demo() {
+    local all_arguments=${*}
     
-    demo 1 2 3 4 5
-    # prints: 1 2 3 4 5
+    echo "${all_arguments}"
+}
+
+demo 1 2 3 4 5
+# prints: 1 2 3 4 5
+```
 
 ## Code readability
 
@@ -94,13 +104,15 @@ Example:
 
 Improve readability of options/parameters by using long variant:
 
-    # bad
-    rm --force
-    ln -fs
-    
-    # good
-    rm -f
-    ln --force --symbolic
+```bash
+# bad
+rm --force
+ln -fs
+
+# good
+rm -f
+ln --force --symbolic
+```
 
 (order options by alphabet if possible)
 
@@ -110,26 +122,28 @@ Improve readability of options/parameters by using long variant:
 
 Example:
 
-    ########################################################################
-    # Sends a mail using mailx (heirloom-mailx)
-    # Seperate multiple mail accounts with a space
-    #
-    # Arguments:
-    #     - recepient: emails (separate multiple addresses with a space)
-    #     - subject: email subject
-    #     - body: email body text
-    #
-    # Usage:
-    #     send_mail "recepient@gmail.com" "subject" "body"
-    ########################################################################
+```bash
+########################################################################
+# Sends a mail using mailx (heirloom-mailx)
+# Seperate multiple mail accounts with a space
+#
+# Arguments:
+#     - recepient: emails (separate multiple addresses with a space)
+#     - subject: email subject
+#     - body: email body text
+#
+# Usage:
+#     send_mail "recepient@gmail.com" "subject" "body"
+########################################################################
+```
  
 Usage: if you have a usage method, you can refer to that method 
 
-    ...
-    # Usage:
-    #     see method "usage" or execute script without parameters
-    ########################################################################
-    ...
+```bash
+# Usage:
+#     see method "usage" or execute script without parameters
+########################################################################
+```
 
 ## Tools
 
