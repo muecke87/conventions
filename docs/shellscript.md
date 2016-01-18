@@ -5,7 +5,7 @@
 1. [Avoid errors by using the proper syntax](#avoid-errors-by-using-the–proper-syntax)
 1. [Code readability](#code-readability)
 1. [File layout](#file-layout)
-1. [Tools](#tools)
+1. [Shellcheck](#shellcheck)
 
 ## Avoid errors by using the proper syntax
 
@@ -49,7 +49,7 @@ echo "hello outside: $BAR"
 # prints: hello outside:
 ```
 
-## Using variables: with apostrophes and brackes
+## Using variables: with apostrophes and brackets
 
 Quote variable in apostrophes and wrapp in brackets:
 
@@ -59,11 +59,11 @@ cp "${foo}" "${bar}"
 ```
 
 * `{}` clearly separates variable names from other characters
-* `""` prevents splitting in multiple arguments if function argument contains spaces (see $IFS)
+* `""` prevents WordSplitting and globbing
 
 Exception:
 
-```
+```bash
 # for [[ .. ]] its okay to not use apostrophes, since WordSplitting is disabled.
 [[ -f $file ]] && echo "$file is a file"
 ```
@@ -145,9 +145,7 @@ Usage: if you have a usage method, you can refer to that method
 ########################################################################
 ```
 
-## Tools
-
-### Shellcheck
+## Shellcheck
 
 Use [shellcheck](https://github.com/koalaman/shellcheck) to find errors in your scripts.
 
