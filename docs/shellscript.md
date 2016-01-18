@@ -28,6 +28,22 @@ Variables defined inside functions should be declared with `local` to restrict s
     echo "hello: $bar" 
     # prints: hello
 
+You can use both together with `local -r`
+
+    foo() {
+        local -r BAR=100
+    
+        # the following statement will fail:
+        BAR=200
+    
+        echo "hello: $BAR"
+    }
+
+    foo 
+    # prints: hello: 100
+
+    echo "hello outside: $BAR" 
+    # prints: hello outside:
 
 ## Using variables: with apostrophes and brackes
 
