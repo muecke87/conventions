@@ -2,14 +2,25 @@
 
 ## Table of Contents
 
-1. [Avoid errors by using the proper syntax](#avoid-errors-by-using-the–proper-syntax)
+1. [Shellcheck](#shellcheck)
+1. [Avoid mistakes by using the proper syntax](#avoid-mistakes-by-using-the–proper-syntax)
 1. [Code readability](#code-readability)
 1. [File layout](#file-layout)
-1. [Shellcheck](#shellcheck)
 
-## Avoid errors by using the proper syntax
+## Shellcheck
 
-## Declare variables with `local` or `readonly`
+* Use [shellcheck](https://github.com/koalaman/shellcheck) to find errors in your scripts.
+* As a general rule: shellcheck is correct - you are wrong - fix the code ;-)
+    * There will be some exceptions. [How to disable a certain check for a line](https://github.com/koalaman/shellcheck/wiki/Ignore).
+* Helpful descriptions for each error code are found in the wiki. E.g. [SC2068](https://github.com/koalaman/shellcheck/wiki/SC2068)
+
+## Avoid mistakes by using the proper syntax
+
+1. verify your scripts with [Shellcheck](#shellcheck). 
+1. the following subchapters describe how to avoid the most common problems.
+1. if there are conflicts between the rules below and shellcheck, shellcheck wins. 
+
+### Declare variables with `local` or `readonly`
 
 Variables intended as constants should be declared with `readonly` and uppercase:
 
@@ -49,7 +60,7 @@ echo "hello outside: $BAR"
 # prints: hello outside:
 ```
 
-## Using variables: with apostrophes and brackets
+### Using variables: with apostrophes and brackets
 
 Quote variable in apostrophes and wrapp in brackets:
 
@@ -68,7 +79,7 @@ Exception:
 [[ -f $file ]] && echo "$file is a file"
 ```
 
-## if statements. prefer `[[` over `[`
+### if statements. prefer `[[` over `[`
 
 `[[` is less error prone. The subtle differences are explained here: http://mywiki.wooledge.org/BashFAQ/031
 
@@ -80,7 +91,7 @@ Exception:
 [[ -f $file ]] && echo "$file is a file"
 ```
 
-## Use `"${*}"` instead of `"${@}"`
+### Use `"${*}"` instead of `"${@}"`
 
 Altough they are very similar `"${*}"` is to prefer since it gives a string and not an array.
 
@@ -145,13 +156,6 @@ Usage: if you have a usage method, you can refer to that method
 ########################################################################
 ```
 
-## Shellcheck
 
-Use [shellcheck](https://github.com/koalaman/shellcheck) to find errors in your scripts.
-
-As a general rule: shellcheck is correct - you are wrong - fix the code ;-)  
-However some exceptions may arise, you might wish to [disable a certain check for a line](https://github.com/koalaman/shellcheck/wiki/Ignore).
-
-Helpful descriptions for each error code are found in the wiki. E.g. [SC2068](https://github.com/koalaman/shellcheck/wiki/SC2068)
 
 
