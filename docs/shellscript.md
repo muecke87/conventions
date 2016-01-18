@@ -107,7 +107,13 @@ Example:
     #     send_mail "recepient@gmail.com" "subject" "body"
     ########################################################################
  
-Usage: if you have a usage method, you can refer to that method (example: https://github.com/infektweb/server/blob/master/backup/cloudbackup/backup.sh)
+Usage: if you have a usage method, you can refer to that method 
+
+    ...
+    # Usage:
+    #     see method "usage" or execute script without parameters
+    ########################################################################
+    ...
 
 ## Tools
 
@@ -116,7 +122,7 @@ Usage: if you have a usage method, you can refer to that method (example: https:
 Use [shellcheck](https://github.com/koalaman/shellcheck) to find errors in your scripts.
 
 As a general rule: shellcheck is correct - you are wrong - fix the code ;-)  
-However some exceptions may arise. [Disable](https://github.com/koalaman/shellcheck/wiki/Ignore) a check for a line.
+However some exceptions may arise, you might wish to [disable a certain check for a line](https://github.com/koalaman/shellcheck/wiki/Ignore).
 
 Helpful descriptions for each error code are found in the wiki. E.g. [SC2068](https://github.com/koalaman/shellcheck/wiki/SC2068)
 
