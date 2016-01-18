@@ -129,7 +129,7 @@ ln --force --symbolic
 
 ## File layout
 
-## Provide file header
+## Provide a file header
 
 Example:
 
