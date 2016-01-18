@@ -111,4 +111,13 @@ Usage: if you have a usage method, you can refer to that method (example: https:
 
 ## Tools
 
-* Use `shellcheck` to find errors in your scripts.
+### Shellcheck
+
+Use [shellcheck](https://github.com/koalaman/shellcheck) to find errors in your scripts.
+
+As a general rule: shellcheck is correct - you are wrong - fix the code ;-)  
+However some exceptions may arise. [Disable](https://github.com/koalaman/shellcheck/wiki/Ignore) a check for a line.
+
+Helpful descriptions for each error code are found in the wiki. E.g. [SC2068](https://github.com/koalaman/shellcheck/wiki/SC2068)
+
+
