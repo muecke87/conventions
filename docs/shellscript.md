@@ -110,7 +110,7 @@ demo 1 2 3 4 5
 
 ## Code readability
 
-## Use long option-/parameter-names
+### Use long option-/parameter-names
 
 
 Improve readability of options/parameters by using long variant:
@@ -140,7 +140,7 @@ Always use the bash shell (not others like sh/ksh/zsh/dash/..).
 ls -l
 ```
 
-## Provide a file header
+### Provide a file header
 
 Example:
 
