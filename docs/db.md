@@ -22,15 +22,15 @@ Example:
 DROP TABLE IF EXISTS guidelines;
 CREATE TABLE guidelines (
   id BIGSERIAL NOT NULL PRIMARY KEY,
-  item_id SMALLINT NOT NULL DEFAULT 1,
+  "itemNo" SMALLINT NOT NULL DEFAULT 1,
   revision SMALLINT NOT NULL DEFAULT 0,
   title TEXT NOT NULL,
   state GUIDELINE_STATE NOT NULL DEFAULT ('CHANGED')::STATE,
-  created_by_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
-  responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
-  review_interval BIGINT NOT NULL DEFAULT (365)::BIGINT,
-  date_created TIMESTAMP WITH TIME ZONE
-) WITH ( OIDS=FALSE );
+  "createdByUserId" BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
+  "responsibleUserId" BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
+  "reviewInterval" BIGINT NOT NULL DEFAULT (365)::BIGINT,
+  "dateCreated" TIMESTAMP WITH TIME ZONE
+);
 
 CREATE OR REPLACE FUNCTION convertPageVersionState(integer) RETURNS STATE AS $$
   BEGIN
@@ -59,7 +59,10 @@ $$ LANGUAGE plpgsql;
 
 ## Naming things
 ### Custom Datatypes
-* Use uppercase for custom data types:
+* Use uppercase for custom data types
+* Use _ to as delimiter
+
+Example:
 ```sql
 CREATE TYPE STATE AS ENUM ('CHANGED', 'VALIDATED', 'DELETED');
 ```
@@ -69,25 +72,25 @@ CREATE TYPE GUIDELINE_STATE AS ENUM ('CHANGED', 'IN_VALIDATION', 'VALIDATED', 'D
 
 ### Table
 * Names in plural
-* No prfixes like "guideline_..."
-* Table name for M:N relations -> M_N (eg. guidelines_details)
+* No prefixes like "guideline_..."
+* Table name for M:N relations -> M_N (eg. guidelinesDetails)
 
 ### Attribute
-__Delimiter for multiple words__ in attribute names is '_':
+__Camelcase__:
 ```sql
-created_by_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
-responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
+"createdByUserId" BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
+"responsibleUserId" BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
 ```
 
 ### Constraint
 __Prefix UNIQUE constraints__ with 'unique':
 ```sql
-ALTER TABLE guidelines_detail ADD CONSTRAINT unique_guidelines_details_revision UNIQUE (guidelines_id, details_id);
+ALTER TABLE "guidelinesDetail" ADD CONSTRAINT "uniqueGuidelinesDetailsRevision" UNIQUE ("guidelinesId", "detailsId");
 ```
 
 __Prefix INDEX constraints__ with 'index':
 ```sql
-CREATE INDEX index_guidelines_details_title ON page_detail USING btree (lower(title));
+CREATE INDEX "indexGuidelinesDetailsTitle" ON page_detail USING btree (lower(title));
 ```
 
 ### Key
@@ -100,7 +103,7 @@ id BIGSERIAL NOT NULL PRIMARY KEY,
 __FK__ names consists of the referenced table name and the PK (usually 'id'), with an optional prefix describing the role of the attribue:
 ```sql
 ...
-guidelines_id BIGINT NOT NULL REFERENCES guidelines(id) ON DELETE CASCADE,
+"guidelinesId" BIGINT NOT NULL REFERENCES guidelines(id) ON DELETE CASCADE,
 ...
 ```
 
@@ -108,33 +111,32 @@ or:
 
 ```sql
 ...
-responsible_user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
+"responsibleUserId" BIGINT NOT NULL REFERENCES users(id) ON DELETE NO ACTION,
 ...
 ```
 
 ### SEQUENCE
-__Sequence__ is always postfixed with '_seq':
+__Sequence__ is always suffixed with 'Seq':
 ```sql
-CREATE SEQUENCE guidelines_item_seq START 10000;
+CREATE SEQUENCE guidelinesItemSeq START 10000;
 ```
 
 ### PLPGSQL/PLV8 Function and Variable
 Function and variable names are:
-* lowercase
-* seperated with '_'
+* camelcase
 Example:
 ```sql
-DROP FUNCTION IF EXISTS get_current_revision_of_page(has_id INTEGER);
-CREATE FUNCTION get_current_revision_of_page(has_id INTEGER) RETURNS INTEGER AS $$
-  SELECT COALESCE((SELECT revision FROM page WHERE item_id = (
-    SELECT item_id FROM page WHERE id = has_id
+DROP FUNCTION IF EXISTS getCurrentRevisionOfPage(hasId INTEGER);
+CREATE FUNCTION getCurrentRevisionOfPage(hasId INTEGER) RETURNS INTEGER AS $$
+  SELECT COALESCE((SELECT revision FROM page WHERE "itemNo" = (
+    SELECT "itemNo" FROM page WHERE id = "hasId"
   ) ORDER BY revision DESC LIMIT 1), 0)
 $$ LANGUAGE SQL;
 ```
 
 #### Function Name
-* Prefix 'assert_' for basic 'unit test like' functions
-* Prefix 'test_' for 'test' functions
+* Prefix 'assert' for basic 'unit test like' functions
+* Prefix 'test' for 'test' functions
 
 ## Documenting Code
 * Use standard SQL comments like '-- '.
@@ -142,7 +144,7 @@ $$ LANGUAGE SQL;
 ```sql
 --
 -- STORED PROCEDURE
---   assert_equal_msg(value BOOLEAN, msg TEXT)
+--   assertEqualMsg(value BOOLEAN, msg TEXT)
 --
 -- DESCRIPTION
 --   Raises a NOTICE upon success and an EXCEPTION in case of an error
@@ -159,4 +161,4 @@ $$ LANGUAGE SQL;
 ```
 
 ## Immutability of tuples
-DB tuples are immutable! In general this means we do not update tuples - instead we add a new tuple, with an incremented revision number (but the same item_id).
+DB tuples are immutable! In general this means we do not update tuples - instead we add a new tuple, with an incremented revision number (but the same itemNo).
