@@ -549,7 +549,7 @@ Everywhere, where an object/function is going further than just to be a simple i
 
 Tag | Template | Description
 ------|--------------|----------------
-@example (required) | `@example` | The @example tag allows you to provide a snippet of code that illustrates the usage of a constructor, a function (or method) or a variable.<br /><br />The @example tag is not intended to be used to generate "inline" examples, if you want this, you need to do it via HTML markup embedded within a @description block, using the <code> tag, for example.
+@example | `@example` | The @example tag allows you to provide a snippet of code that illustrates the usage of a constructor, a function (or method) or a variable.<br /><br />The @example tag is not intended to be used to generate "inline" examples, if you want this, you need to do it via HTML markup embedded within a @description block, using the <code> tag, for example.
 @param (required) | `@param {Type} varname Description` | Used with method, function and constructor calls to document the arguments of a function.<br />Type names must be enclosed in curly braces. If the type is omitted, the compiler will not type-check the parameter.
 @return (required) | `@return {Type} Description` | Used with method and function calls to document the return type. When writing descriptions for boolean parameters, prefer "Whether the component is visible" to "True if the component is visible, false otherwise". If there is no return value, use `@return {void}`.<br />Type names must be enclosed in curly braces. If the type is omitted, the compiler will not type-check the return value.
 @see (optional) | `@see Link` | Reference a lookup to another class function or method.
