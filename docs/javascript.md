@@ -531,6 +531,8 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     ```
 
   - Don't use trailing `.` unless the comment contains multiple sentences.
+  
+  - Comments must start with an uppercase letter.
 
   - Don't write down a developer name or other personal notes.
 
