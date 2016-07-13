@@ -100,10 +100,10 @@ __PK__ is always named 'id':
 id BIGSERIAL NOT NULL PRIMARY KEY,
 ...
 ```
-__FK__ names consists of the referenced table name and the PK (usually 'id'), with an optional prefix describing the role of the attribue:
+__FK__ names consists of the referenced table name (singular) and the PK (usually 'id'), with an optional prefix describing the role of the attribue:
 ```sql
 ...
-"guidelinesId" BIGINT NOT NULL REFERENCES guidelines(id) ON DELETE CASCADE,
+"guidelineId" BIGINT NOT NULL REFERENCES guidelines(id) ON DELETE CASCADE,
 ...
 ```
 
