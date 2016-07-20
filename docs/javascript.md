@@ -238,8 +238,8 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 
 ## Return early
 
-  - When checking variables for specific values/errors use the "return early" approch
-
+  - When checking variables for specific values/errors use the "return early" approch to avoid deeply nested if/else constructs.
+  
     ```javascript
       // bad
       if (isUploadedFile) {
