@@ -9,6 +9,7 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 1. [Objects](#objects)
 1. [Strings](#strings)
 1. [Arrays](#arrays)
+1. [Return early](#return-early)
 1. [Functions](#functions)
   1. [Callback](#callback)
 1. [Modules](#modules)
@@ -233,6 +234,24 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
 
     // good
     fruits.push('apple');
+    ```
+
+## Return early
+
+  - When checking variables for specific values/errors use the "return early" approch
+
+    ```javascript
+      // bad
+      if (isUploadedFile) {
+          // Go ahead with processing for all non-error cases...
+      } else {
+          return;
+      }
+      
+      // good
+      if (!isUploadedFile) return;
+      
+      // Go ahead with processing for all non-error cases...
     ```
 
 ## Functions
