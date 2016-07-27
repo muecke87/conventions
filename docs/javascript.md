@@ -578,7 +578,7 @@ Tag | Template | Description
 
 #### Types
 
-  - Primitive types start with a lowercase letter: `number`, `string`, `boolean`, `null`, `undefinded`
+  - Primitive types start with a lowercase letter: `number`, `string`, `boolean`, `null`, `undefined`
 
   - Object types start with a capital letter: `Function`, `Object`, `Array`, `RegExp`, `MyCustomObject`
 
