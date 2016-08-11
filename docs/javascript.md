@@ -534,10 +534,10 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
       // ...
     }
     ```
-  - **is/has prefixed booleans**: boolean should be prefixed with _is_ or _has_ .
+  - **is/has prefixed booleans**: booleans should be prefixed with _is_ or _has_ .
 
     ```javascript
-    const hasNoPanles = this.props.panels.length === 0;
+    const hasNoPanels = panels.length === 0;
     ```
 
 ## Documenting code
