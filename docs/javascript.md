@@ -539,6 +539,12 @@ This style guide is a list of *dos* and *don'ts* for JavaScript programs and is 
     ```javascript
     const hasNoPanels = panels.length === 0;
     ```
+  - **Event handlers**: event handler names should have the following format _on${Subjekt}${Event/Aktion}'_.
+
+    ```javascript
+    onDiffViewClick: () => {}
+    onPreviewClick: () => {}
+    ```
 
 ## Documenting code
 
